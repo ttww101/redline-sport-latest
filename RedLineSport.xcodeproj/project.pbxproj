@@ -2629,7 +2629,7 @@
 		EBC0A2A91CA924AE00F75E7E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EBC0A2B21CA924AE00F75E7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EBC0A2B41CA924AE00F75E7E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		EBC0A2B91CA924AE00F75E7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EBC0A2B91CA924AE00F75E7E /* RedLineSport_Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RedLineSport_Info.plist; sourceTree = "<group>"; };
 		EBC0A2DE1CA92AD700F75E7E /* clear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clear.png; sourceTree = "<group>"; };
 		EBC0A2DF1CA92AD700F75E7E /* comment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "comment@2x.png"; sourceTree = "<group>"; };
 		EBC0A2E01CA92AD700F75E7E /* fabu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fabu@2x.png"; sourceTree = "<group>"; };
@@ -6906,7 +6906,7 @@
 				EBC0A2B11CA924AE00F75E7E /* Main.storyboard */,
 				EB4617721E1611E900A2907E /* RLSFile.swift */,
 				EBC0A2B41CA924AE00F75E7E /* Assets.xcassets */,
-				EBC0A2B91CA924AE00F75E7E /* Info.plist */,
+				EBC0A2B91CA924AE00F75E7E /* RedLineSport_Info.plist */,
 				EBC0A2A81CA924AE00F75E7E /* Supporting Files */,
 				EB4617711E1611E900A2907E /* RedLineSport-Bridging-Header.h */,
 			);
@@ -9063,7 +9063,7 @@
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/UMengAnalytics\"",
 				);
-				INFOPLIST_FILE = RedLineSport/Info.plist;
+				INFOPLIST_FILE = RedLineSport/RedLineSport_Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -9142,7 +9142,7 @@
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/UMengAnalytics\"",
 				);
-				INFOPLIST_FILE = RedLineSport/Info.plist;
+				INFOPLIST_FILE = RedLineSport/RedLineSport_Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -9264,7 +9264,7 @@
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/UMengAnalytics\"",
 				);
-				INFOPLIST_FILE = RedLineSport/Info.plist;
+				INFOPLIST_FILE = RedLineSport/RedLineSport_Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (

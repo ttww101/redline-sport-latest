@@ -8,14 +8,12 @@
 	<string>连红体育</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
-	<key>CFBundleIcons~ipad</key>
-	<dict/>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>滚球体育</string>
+	<string>连红体育</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -67,16 +65,16 @@
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+            <key>CFBundleURLName</key>
+            <string>redlinesport</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.Gunqiu.GQapp</string>
+				<string>com.lineredsport.mobile</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
-	<key>LSApplicationCategoryType</key>
-	<string></string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>wechat</string>
@@ -117,7 +115,7 @@
 	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
-		<key> NSAllowsArbitraryLoadsInWebContent</key>
+		<key>NSAllowsArbitraryLoadsInWebContent</key>
 		<true/>
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
@@ -141,7 +139,7 @@
 	<key>NSMotionUsageDescription</key>
 	<string>访问运动与健康</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>滚球体育会在修改头像和发布推荐时使用您的相机，是否允许?</string>
+	<string>修改头像和发布推荐时使用您的相机，是否允许?</string>
 	<key>NSRemindersUsageDescription</key>
 	<string>访问提醒事项</string>
 	<key>UIAppFonts</key>
@@ -161,10 +159,6 @@
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleDefault</string>
 	<key>UISupportedInterfaceOrientations</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-	</array>
-	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
