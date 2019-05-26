@@ -10,13 +10,13 @@
 #import "GL_TextView.h"
 #import "RLSInputViewController.h"
 #import "InputAccessoryView.h"
-#import "WBEmoticonInputView.h"
-#import "WBStatusComposeTextParser.h"
+//#import "WBEmoticonInputView.h"
+//#import "WBStatusComposeTextParser.h"
 #import "PictureModel.h"
 #import "NSAttributedString+html.h"
 
 
-@interface PublishViewController () <UITextViewDelegate, UITextFieldDelegate, YYTextViewDelegate, InputAccessoryViewDelegate, YYTextKeyboardObserver, WBStatusComposeEmoticonViewDelegate,UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface PublishViewController () <UITextViewDelegate, UITextFieldDelegate, YYTextViewDelegate, InputAccessoryViewDelegate, YYTextKeyboardObserver,UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (nonatomic, strong) UITextField *titleTxtFiled;
 @property (nonatomic, strong) UIView *lineView;
 @property (nonatomic, strong) GL_TextView *textview;
@@ -284,9 +284,9 @@
         [self.textview becomeFirstResponder];
         [sender setBackgroundImage:[UIImage imageNamed:@"emoji"] forState:UIControlStateNormal];
     } else {
-        WBEmoticonInputView *v = [WBEmoticonInputView sharedView];
-        v.delegate = self;
-        self.textview.inputView = v;
+//        WBEmoticonInputView *v = [WBEmoticonInputView sharedView];
+//        v.delegate = self;
+//        self.textview.inputView = v;
         [self.textview reloadInputViews];
         [self.textview becomeFirstResponder];
         [sender setBackgroundImage:[UIImage imageNamed:@"keyboard"] forState:UIControlStateNormal];
@@ -524,7 +524,7 @@
         _textview.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
         _textview.inputAccessoryView = [UIView new];
         _textview.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-         _textview.textParser = [WBStatusComposeTextParser new];
+//         _textview.textParser = [WBStatusComposeTextParser new];
         _textview.showsVerticalScrollIndicator = NO;
         _textview.alwaysBounceVertical = YES;
         _textview.allowsCopyAttributedString = NO;
