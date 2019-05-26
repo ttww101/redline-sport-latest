@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title>直播</title> 
+<link rel="stylesheet" type="text/css" href="style.css" />
+<script type="text/javascript"  src="jquery.min.js" ></script>
+<script type="text/javascript"  src="http://www.gunqiu.com/static/js/template.js"></script>
+ <script type="text/javascript" src="common.js" ></script>
+<script type="text/javascript"  src="zhibo.js" ></script>
+<style>
+</style>
+</head>
+
+<body  ontouchstart="">
+<div class="header">
+</div>
+<div class="content mt-50">
+ <div id="one"> 
+<div class="col">   
+  <script id="zbMacth" type="text/html">  
+    <div class="zblist">
+    <div class="end mt-20 mb-10"><img src="clock.png" alt="" /></div>
+     <ul>
+		<li>
+		<span class="zbzhu"> </span>
+		<span class="zbtime"><i></i></span>
+		<span class="zbke"></span>
+		</li> 
+     {{each event as v}}
+     <li> 
+	      <span class="zbzhu"> 
+	       {{if v.ishome==1}}
+             {{if v.type==1}}
+               <em class="jinqiu"> </em> <span>{{if v.name!=undefined}} {{v.name}}{{/if}}</span>
+             {{/if}}
+             {{if v.type==2}}
+                <em class="redCard"> </em> <span>{{if v.name!=undefined}} {{v.name}}{{/if}}</span>
+              {{/if}}
+               {{if v.type==3}}
+                 <em class="yellowCard"> </em> <span>{{if v.name!=undefined}} {{v.name}}{{/if}}</span>
+				 {{/if}}
+               {{if v.type==7}}
+                <em class="dianqiu"> </em> <span>{{if v.name!=undefined}} {{v.name}}{{/if}}</span>
+				{{/if}}
+               {{if v.type==8}}
+                <em class="wulongqiu"> </em> <span>{{if v.name!=undefined}} {{v.name}}{{/if}}</span>
+				{{/if}}
+               {{if v.type==9}}
+                 <em class="yellowRedCard"> </em> <span>{{if v.name!=undefined}} {{v.name}}{{/if}}</span>
+				 {{/if}}
+               {{if v.type==10}}
+               <i style="margin-top:-8px;"> <em class="jinqiu"> </em> <span>{{v.name.split(",")[0]}}</span></i>  <i><em class="assist"> </em><span>{{v.name.split(",")[1]}}</span></i>
+               {{/if}}
+               {{if v.type==11}}
+              <i style="margin-top:-8px;"> <em class="changePeople"> </em> <span>{{v.name.split(",")[1]}}<i>{{v.name.split(",")[0]}}</i> </span></i>
+               {{/if}}
+       {{/if}} 
+       </span>
+      <span class="zbtime"><em>{{if v.time=='45'}}中场 {{else}} {{v.time}}' {{/if}}</em> <i></i></span>
+		   <span class="zbke">
+              {{if v.ishome==0}}
+		       {{if v.type==1}}
+				   <em class="jinqiu"> </em> <span>{{if v.name!=undefined}} {{v.name}} {{else}} - {{/if}}</span>
+				   {{/if}}
+				 {{if v.type==2}}
+					<em class="redCard"> </em> <span>{{if v.name!=undefined}} {{v.name}} {{else}} - {{/if}}</span>
+					{{/if}}
+				   {{if v.type==3}}
+					 <em class="yellowCard"> </em> <span>{{if v.name!=undefined}} {{v.name}} {{else}} - {{/if}}</span>
+					 {{/if}}
+				   {{if v.type==7}}
+					<em class="dianqiu"> </em> <span>{{if v.name!=undefined}} {{v.name}} {{else}} - {{/if}}</span>
+					{{/if}}
+				   {{if v.type==8}}
+					<em class="wulongqiu"> </em> <span>{{if v.name!=undefined}} {{v.name}} {{else}} - {{/if}}</span>
+					{{/if}}
+				   {{if v.type==9}}
+					 <em class="yellowRedCard"> </em> <span>{{if v.name!=undefined}} {{v.name}} {{else}} - {{/if}}</span>
+					 {{/if}}
+				   {{if v.type==10}}
+					<i style="margin-top:-8px;"><em class="jinqiu"> </em> <span>{{v.name.split(",")[0]}}</span></i>  <i><em class="assist"> </em><span>{{v.name.split(",")[1]}}</span></i>
+				   {{/if}}
+				   {{if v.type==11}}
+				   <i style="margin-top:-8px;"><em class="changePeople"> </em> <span>{{v.name.split(",")[1]}}<i>{{v.name.split(",")[0]}}</i> </span></i>
+				   {{/if}}
+			  {{/if}} 
+				 </span>
+      </li>
+     {{/each}}
+     </ul>
+<div class="end mt-10"><img src="start.png" alt="" />  </div>
+    </div> 
+<div class="qiu mt-10">
+  <span><i>进球</i> <em class="jinqiu"> </em>   </span>
+  <span><i>点球</i> <em class="dianqiu"> </em>  </span> 
+ <span><i>乌龙球</i> <em class="wulongqiu"> </em>   </span>
+ <span><i>黄牌</i> <em class="yellowCard"> </em>    </span>
+ <span><i>红牌</i> <em class="redCard"> </em>    </span>
+ <span><i>换人</i> <em class="changePeople"> </em>  </span>  
+ <span><i>助攻</i> <em class="assist"> </em>  </span>  
+ <span><i>两黄一红</i> <em class="yellowRedCard"> </em>  </span>
+ </div>
+  <div class="zhibotj"> 
+     <ul> 
+      {{each tech as v}} 
+      <li>
+		<span class="text"> 
+			<i><em class="red-color">{{v.teamA}}</em></i>
+			<i>{{v.name}}</i>
+			<i><em class="blue-color">{{v.teamB}}</em></i>
+		 </span>
+		 <span class="count">  <i style="width:{{v.percent}}%"> </i>  <i> </i>  </span>
+	  </li>
+       {{/each}}  
+     </ul> 
+ </div> 
+	</script>
+    <div></div> 
+</div> 
+</div>
+ 
+ <div id="two" style="display:none">
+    <script id="zbvsMacth" type="text/html">
+        
+        
+   {{if (homestatis==undefined ||  homestatis==null)  &&(gueststatis ==  undefined || gueststatis == null)}}
+    <div class="nodata1"> <img src="nodata.png" alt="" /> <span>暂无相关数据</span></div>
+  {{else}}
+   <div class="col">  
+   <div class="zrTit"> <i class="red-color">{{homename}}</i> <i class="blue-color">{{guestname}}</i> </div> 
+    <div class="zr-list">
+     <ul class="home"> 
+	  {{each homestatis as v}} 
+	    <li> <span> <i class="name">{{v.name}}</i> <i class="position">[{{v.place}}]</i></span> </li> 
+       {{/each}}  
+	   </ul>
+	  <ul class="guest"> 
+	   {{each gueststatis as v}} 
+	    <li> <span> <i class="name">{{v.name}}</i> <i class="position">[{{v.place}}]</i></span> </li> 
+       {{/each}}  
+	  </ul> 
+   </div>  
+</div>
+{{/if}}
+  
+  
+  </script>  
+    <div></div>
+</div>
+
+
+</div>   
+
+<script>
+  document.body.addEventListener('touchstart',function(){},false);
+</script>
+<script>
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<title>指数</title> 
+<link rel="stylesheet" type="text/css" href="style.css" />
+<script type="text/javascript"  src="jquery.min.js"></script>
+<script type="text/javascript"  src="http://www.gunqiu.com/static/js/template.js"></script>
+ <script type="text/javascript" src="common.js"></script>
+<script type="text/javascript"  src="zhishu-list.js"></script> 
+
+</head>
+ 
+
+<body  ontouchstart="" class = "white">
+    
+    
+ <script id="zsMacth" type="text/html">   
+     <div class="tit3"><span>{{if flag=="4"}} 历史同赔{{else}}历史同盘{{/if}}</span> </div>
+     <table class="zstable2" cellspacing="0" cellpadding="0">
+     <thead>
+     <tr>
+     <th width="28%">赛事范围</th>
+     {{if flag=="4"}}
+     <th>主胜</th>
+     <th>平局</th>
+     <th>主负</th>
+     {{else if flag=="5"}}
+     <th>让球胜</th>
+     <th>本金返还</th>
+     <th>让球负</th>
+     {{else}}
+     <th>大球</th> 
+     <th>本金返还</th> 
+     <th>小球</th> 
+     {{/if}}
+     </tr>
+     </thead>
+<tbody> 
+<tr>
+<td>全赛事 <em>近{{historyAll.matchNum}}场</em> </td>
+<td> <i class="red-color">{{historyAll.winRate}}</i> <em>{{historyAll.winRateDesc}}</em>  </td>
+<td><i class="blue-color">{{historyAll.drawRate}}</i> <em>{{historyAll.drawRateDesc}}</em></td>
+<td><i class="green-color">{{historyAll.loseRate}}</i> <em>{{historyAll.loseRateDesc}}</em></td>
+</tr> 
+<tr>
+<td>{{historySame.sclass.nameJs}} <em>近{{historySame.matchNum}}场</em> </td>
+<td> <i class="red-color">{{historySame.winRate}}</i> <em>{{historySame.winRateDesc}}</em>  </td>
+<td><i class="blue-color">{{historySame.drawRate}}</i> <em>{{historySame.drawRateDesc}}</em></td>
+<td><i class="green-color">{{historySame.loseRate}}</i> <em>{{historySame.loseRateDesc}}</em></td>
+</tr> 
+</tbody>
+</table>
+
+<div class="zsmore"id = "btn_submit" >{{if see}}  <span>查看统计明细 》</span> {{/if}}</div>
+
+ <div class="tit3"><span>指数变化</span> </div> 
+{{if flag=="4"}}
+<table class="zstable1" cellspacing="0" cellpadding="0">
+<thead>
+<tr>
+<th>指数</th> 
+<th>凯利指数</th> 
+<th>返还率</th> 
+<th>时间</th> 
+</tr>
+</thead>
+<tbody> 
+{{each list as v vk}}
+<tr>
+<td>
+ <i class="{{v.homecolor}}">{{v.homewin.toFixed(2)}}</i> 
+ <i class="{{v.offcolor}}">{{v.standoff.toFixed(2)}}</i> 
+ <i class="{{v.guestcolor}}">{{v.guestwin.toFixed(2)}}</i> 
+  <span> 
+  {{if vk==0}}即{{/if}}
+   {{if (vk==count && count!=0)}}初{{/if}}
+ </span> 
+ </td>
+<td> 
+   <i>{{v.winKellyIdx.toFixed(2)}}</i> 
+   <i>{{v.drawKellyIdx.toFixed(2)}}</i> 
+   <i>{{v.loseKellyIdx.toFixed(2)}}</i> 
+ </td>
+<td>{{v.returnrate.toFixed(2)}}</td>
+<td>{{v.modifytime}}</td>
+</tr>
+ {{/each}}
+</tbody>
+</table>
+ {{else}}
+<table class="zstable1" cellspacing="0" cellpadding="0">
+<thead>
+<tr>
+<th>指数</th>  
+<th>时间</th> 
+</tr>
+</thead>
+<tbody> 
+{{each list as v vk}}
+<tr>
+<td>
+ <i class="{{v.homecolor}}">{{v.upodds.toFixed(2)}}</i> 
+ <i class="{{v.offcolor}}">{{v.goal}}</i> 
+ <i class="{{v.guestcolor}}">{{v.downodds.toFixed(2)}}</i> 
+  <span> 
+  {{if vk==0}}即{{/if}}
+   {{if (vk==count && count!=0)}}初{{/if}}
+ </span> 
+ </td> 
+<td>{{v.modifytime}}</td>
+</tr>
+ {{/each}}
+</tbody>
+</table> 
+ {{/if}}
+  </script>
+  <div></div>
+ 
+<script>
+  document.body.addEventListener('touchstart',function(){},false);
+</script>
+
+</body>
+</html>

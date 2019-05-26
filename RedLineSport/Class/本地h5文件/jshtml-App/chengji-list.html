@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title>个人成绩统计</title> 
+<link rel="stylesheet" type="text/css" href="style.css" />
+<script type="text/javascript"  src="jquery.min.js"></script>
+<script type="text/javascript"  src="http://www.gunqiu.com/static/js/template.js"></script> 
+ <script type="text/javascript" src="common.js"></script>
+<script type="text/javascript" src="chengji-list.js"></script> 
+</head> 
+
+<body  ontouchstart=""> 
+<div class="cjti"> 
+  <script id="listMacth" type="text/html"> 
+  <div class="marklist pb-30">  
+    <div class="marktit"><span> </span>  <i>赛事分布统计</i> </div>
+     <table class="tablecj game" cellspacing="0" cellpadding="0"> 
+        <thead>
+        <th>赛事 </th>
+        <th width="50">场次</th>
+        <th width="90">胜率</th>
+        <th width="40">盈利率</th> 
+        </thead>
+        <tbody> 
+	    {{if sclass.length==0}}
+			<tr>
+			<td colspan="4" class="nodata">暂无相关数据</td>
+			</tr>
+	    {{else}}
+		   {{each sclass as v}}  
+			<tr>
+			<td>{{v.sclassname}}</td>
+			<td>{{v.recommendCount}}</td>
+			<td>{{v.winRate}}</td>
+			<td class="{{v.profitRate.split('%')[0]>0?'red-color':''}}">{{v.profitRate}}</td>
+			</tr> 
+		   {{/each}} 
+	   {{/if}} 
+        </tbody>
+     </table> 
+ 
+    <div class="marktit"><span> </span>  <i>玩法分布统计</i> </div>
+     <table class="tablecj plays" cellspacing="0" cellpadding="0">
+      <thead>
+        <th>玩法 </th>
+        <th>赛果</th>
+        <th>场次</th>
+        <th>胜率</th>
+        <th width="40">盈利率</th> 
+		</thead>
+        <tbody>   
+	       {{if playYa.length==3}}
+			<tr>
+			<td> 亚指</td>
+			<td><span>{{playYa[0].choicename}} </span> <span>{{playYa[1].choicename}}</span> <span>{{playYa[2].choicename}}</span></td>
+			<td><span>{{playYa[0].recommendCount}} </span> <span>{{playYa[1].recommendCount}}</span> <span>{{playYa[2].recommendCount}}</span></td>
+			<td><span>{{playYa[0].winRate}}</span> <span>{{playYa[1].winRate}} </span> <span>{{playYa[2].winRate}} </span></td>
+			<td> 
+			   <span class="{{playYa[0].profitRate.split('%')[0]>0?'red-color':''}}">{{playYa[0].profitRate}} </span>  
+			   <span class="{{playYa[1].profitRate.split('%')[0]>0?'red-color':''}}">{{playYa[1].profitRate}} </span> 
+			   <span class="{{playYa[2].profitRate.split('%')[0]>0?'red-color':''}}">{{playYa[2].profitRate}} </span>
+			 </td>	
+			</tr>
+			{{/if}} 
+	       {{if playYa.length==2}}
+			<tr>
+			<td> 亚指</td> 
+			<td><span>{{playYa[0].choicename}} </span> <span>{{playYa[1].choicename}}</span> </td>
+			<td><span>{{playYa[0].recommendCount}} </span> <span>{{playYa[1].recommendCount}}</span></td>
+			<td><span>{{playYa[0].winRate}}</span> <span>{{playYa[1].winRate}} </span> </td>
+			<td> 
+			   <span class="{{playYa[0].profitRate.split('%')[0]>0?'red-color':''}}">{{playYa[0].profitRate}} </span>  
+			   <span class="{{playYa[1].profitRate.split('%')[0]>0?'red-color':''}}">{{playYa[1].profitRate}} </span> 
+			 </td>	
+			</tr>
+			{{/if}} 
+	       {{if playYa.length==1}}
+			<tr>
+			<td> 亚指</td> 
+			<td><span>{{playYa[0].choicename}} </span> </td>
+			<td><span>{{playYa[0].recommendCount}} </span></td>
+			<td><span>{{playYa[0].winRate}}</span>  </td>
+			<td><span class="{{playYa[0].profitRate.split('%')[0]>0?'red-color':''}}">{{playYa[0].profitRate}}</span> </td>	
+			 </tr>
+	      {{/if}} 
+		  
+		 {{if playDx.length==3}}
+			<tr>
+			<td> 进球数</td>
+			<td><span>{{playDx[0].choicename}} </span> <span>{{playDx[1].choicename}}</span> <span>{{playDx[2].choicename}}</span></td>
+			<td><span>{{playDx[0].recommendCount}} </span> <span>{{playDx[1].recommendCount}}</span> <span>{{playDx[2].recommendCount}}</span></td>
+			<td><span>{{playDx[0].winRate}}</span> <span>{{playDx[1].winRate}} </span> <span>{{playDx[2].winRate}} </span></td>
+			<td> 
+			   <span class="{{playDx[0].profitRate.split('%')[0]>0?'red-color':''}}">{{playDx[0].profitRate}} </span>  
+			   <span class="{{playDx[1].profitRate.split('%')[0]>0?'red-color':''}}">{{playDx[1].profitRate}} </span> 
+			   <span class="{{playDx[2].profitRate.split('%')[0]>0?'red-color':''}}">{{playDx[2].profitRate}} </span>
+			 </td>	
+			</tr>
+			{{/if}} 
+	       {{if playDx.length==2}}
+			<tr>
+			<td> 进球数</td> 
+			<td><span>{{playDx[0].choicename}} </span> <span>{{playDx[1].choicename}}</span> </td>
+			<td><span>{{playDx[0].recommendCount}} </span> <span>{{playDx[1].recommendCount}}</span></td>
+			<td><span>{{playDx[0].winRate}}</span> <span>{{playDx[1].winRate}} </span> </td>
+			<td> 
+			   <span class="{{playDx[0].profitRate.split('%')[0]>0?'red-color':''}}">{{playDx[0].profitRate}} </span>  
+			   <span class="{{playDx[1].profitRate.split('%')[0]>0?'red-color':''}}">{{playDx[1].profitRate}} </span> 
+			 </td>	
+			</tr>
+			{{/if}} 
+	       {{if playDx.length==1}}
+			<tr>
+			<td> 进球数</td> 
+			<td><span>{{playDx[0].choicename}} </span> </td>
+			<td><span>{{playDx[0].recommendCount}} </span></td>
+			<td><span>{{playDx[0].winRate}}</span>  </td>
+			<td><span class="{{playDx[0].profitRate.split('%')[0]>0?'red-color':''}}">{{playDx[0].profitRate}}</span> </td>	
+			 </tr>
+	      {{/if}} 
+		  
+		   {{if playOu.length==4}}
+			<tr>
+			<td> 胜平负</td>
+			<td><span>{{playOu[0].choicename}} </span> <span>{{playOu[1].choicename}}</span> <span>{{playOu[2].choicename}}</span> <span>{{playOu[3].choicename}}</span></td>
+			<td><span>{{playOu[0].recommendCount}} </span> <span>{{playOu[1].recommendCount}}</span> <span>{{playOu[2].recommendCount}}</span> <span>{{playOu[3].recommendCount}}</span></td>
+			<td><span>{{playOu[0].winRate}}</span> <span>{{playOu[1].winRate}} </span> <span>{{playOu[2].winRate}} </span> <span>{{playOu[3].winRate}}</span> </td>
+			<td> 
+			   <span class="{{playOu[0].profitRate.split('%')[0]>0?'red-color':''}}">{{playOu[0].profitRate}} </span>  
+			   <span class="{{playOu[1].profitRate.split('%')[0]>0?'red-color':''}}">{{playOu[1].profitRate}} </span> 
+			   <span class="{{playOu[2].profitRate.split('%')[0]>0?'red-color':''}}">{{playOu[2].profitRate}} </span> 
+			   <span class="{{playOu[3].profitRate.split('%')[0]>0?'red-color':''}}">{{playOu[3].profitRate}} </span>
+			 </td>	
+			</tr>
+			{{/if}} 
+		   {{if playOu.length==3}}
+			<tr>
+			<td> 胜平负</td>
+			<td><span>{{playOu[0].choicename}} </span> <span>{{playOu[1].choicename}}</span> <span>{{playOu[2].choicename}}</span></td>
+			<td><span>{{playOu[0].recommendCount}} </span> <span>{{playOu[1].recommendCount}}</span> <span>{{playOu[2].recommendCount}}</span></td>
+			<td><span>{{playOu[0].winRate}}</span> <span>{{playOu[1].winRate}} </span> <span>{{playOu[2].winRate}} </span></td>
+			<td> 
+			   <span class="{{playOu[0].profitRate.split('%')[0]>0?'red-color':''}}">{{playOu[0].profitRate}} </span>  
+			   <span class="{{playOu[1].profitRate.split('%')[0]>0?'red-color':''}}">{{playOu[1].profitRate}} </span> 
+			   <span class="{{playOu[2].profitRate.split('%')[0]>0?'red-color':''}}">{{playOu[2].profitRate}} </span>
+			 </td>	
+			</tr>
+			{{/if}} 
+	       {{if playOu.length==2}}
+			<tr>
+			<td> 胜平负</td> 
+			<td><span>{{playOu[0].choicename}} </span> <span>{{playOu[1].choicename}}</span> </td>
+			<td><span>{{playOu[0].recommendCount}} </span> <span>{{playOu[1].recommendCount}}</span></td>
+			<td><span>{{playOu[0].winRate}}</span> <span>{{playOu[1].winRate}} </span> </td>
+			<td> 
+			   <span class="{{playOu[0].profitRate.split('%')[0]>0?'red-color':''}}">{{playOu[0].profitRate}} </span>  
+			   <span class="{{playOu[1].profitRate.split('%')[0]>0?'red-color':''}}">{{playOu[1].profitRate}} </span> 
+			 </td>	
+			{{/if}} 
+			</tr>
+	       {{if playOu.length==1}}
+			<tr>
+			<td> 胜平负</td> 
+			<td><span>{{playOu[0].choicename}} </span> </td>
+			<td><span>{{playOu[0].recommendCount}} </span></td>
+			<td><span>{{playOu[0].winRate}}</span>  </td>
+			<td><span class="{{playOu[0].profitRate.split('%')[0]>0?'red-color':''}}">{{playOu[0].profitRate}}</span> </td>	
+			 </tr> 
+		{{/if}} 
+   
+	   {{if playYa.length==0&&playDx.length==0&&playOu.length==0}} 
+        <tr>
+        <td colspan="5" class="nodata">暂无相关数据</td>
+        </tr>
+	   {{/if}} 
+		
+        </tbody>
+     </table> 
+ 
+       <div class="marktit"><span> </span>  <i>让球盘口统计</i> </div> 
+        <table class="tablecj ya" cellspacing="0" cellpadding="0"> 
+        <thead>
+        <th>亚指 </th>
+        <th width="50">场次</th>
+        <th width="90">胜率</th>
+        <th width="40">盈利率</th> 
+        </thead>
+        <tbody>
+	   {{if yastatis.length>0}} 
+		   {{each yastatis as v}} 
+			  <tr>
+			  <td>{{v.paninv}}</td>
+			  <td>{{v.recommendCount}}</td>
+			  <td>{{v.winRate}}</td>
+			  <td class="{{v.profitRate.split('%')[0]>0?'red-color':''}}">{{v.profitRate}}</td>
+			  </tr>
+		   {{/each}}
+	    {{else}} 
+			<tr>
+			<td colspan="4" class="nodata">暂无相关数据</td>
+			</tr>
+	   {{/if}}  
+        </tbody> 
+        </table>   
+        
+    <div class="marktit"><span> </span>  <i>进球数盘口统计 </i> </div>
+ 
+          <table class="tablecj dx" cellspacing="0" cellpadding="0"> 
+        <thead>
+        <th>盘口 </th>
+        <th width="50">场次</th>
+        <th width="90">胜率</th>
+        <th width="40">盈利率</th> 
+        </thead>
+        <tbody>
+	   {{if dxstatis.length>0}}
+			{{each dxstatis as v}} 
+			  <tr>
+			  <td>{{v.paninv}}</td>
+			  <td>{{v.recommendCount}}</td>
+			  <td>{{v.winRate}}</td>
+			  <td class="{{v.profitRate.split('%')[0]>0?'red-color':''}}">{{v.profitRate}}</td>
+			  </tr>
+		   {{/each}}
+	    {{else}} 
+			<tr>
+			<td colspan="4" class="nodata">暂无相关数据</td>
+			</tr>
+	   {{/if}}  
+        </tbody> 
+        </table>  
+    
+        <div class="marktit"><span> </span> <i>时间分布统计</i></div>
+           <table class="tablecj time" cellspacing="0" cellpadding="0">
+         <thead>
+        <th>距开赛 </th>
+        <th width="50">场次</th>
+        <th width="90">胜率</th>
+        <th width="40">盈利率</th> 
+        </thead>
+        <tbody>
+	   {{if timestatis.length>0}}
+			{{each timestatis as v}} 
+			  <tr>
+			  <td>{{v.timeinv}}</td>
+			  <td>{{v.recommendCount}}</td>
+			  <td>{{v.winRate}}</td>
+			  <td class="{{v.profitRate.split('%')[0]>0?'red-color':''}}">{{v.profitRate}}</td>
+			  </tr>
+		   {{/each}}
+	    {{else}} 
+			<tr>
+			<td colspan="4" class="nodata">暂无相关数据</td>
+			</tr>
+	   {{/if}}  
+        </tbody>
+        </table> 
+         
+        <div class="marktit"><span> </span> <i>按月份统计 </i></div>
+       <table class="tablecj monthtj" cellspacing="0" cellpadding="0">
+         <thead>
+        <th>月 </th>
+        <th width="50">场次</th>
+        <th width="90">胜率</th>
+        <th width="40">盈利率</th> 
+        </thead>
+        <tbody>
+	   {{if groupMonth.length>0}}
+			{{each groupMonth as v}} 
+			  <tr>
+			  <td>{{v.unitstr}}</td>
+			  <td>{{v.recommendCount}}</td>
+			  <td>{{v.winRate}}</td>
+			  <td class="{{v.profitRate.split('%')[0]>0?'red-color':''}}">{{v.profitRate}}</td>
+			  </tr>
+		   {{/each}}
+	    {{else}} 
+			<tr>
+			<td colspan="4" class="nodata">暂无相关数据</td>
+			</tr>
+	   {{/if}}  
+        </tbody>
+        </table> 
+        
+        <div class="marktit"><span> </span> <i>按天统计</i></div>
+       <table class="tablecj weektj" cellspacing="0" cellpadding="0">
+         <thead>
+        <th>日</th>
+        <th width="50">场次</th>
+        <th width="90">胜率</th>
+        <th width="40">盈利率</th> 
+        </thead>
+        <tbody>
+	   {{if groupWeek.length>0}}
+			 {{each groupWeek as v}} 
+			  <tr>
+			  <td>{{v.unitstr}}</td>
+			  <td>{{v.recommendCount}}</td>
+			  <td>{{v.winRate}}</td>
+			  <td class="{{v.profitRate.split('%')[0]>0?'red-color':''}}">{{v.profitRate}}</td>
+			  </tr>
+		   {{/each}}
+	    {{else}} 
+			<tr>
+			<td colspan="4" class="nodata">暂无相关数据</td>
+			</tr>
+	   {{/if}}  
+        </tbody>
+        </table>  
+     
+        </div>  
+   </script>
+   <div></div> 
+  
+</div>
+<script>
+  document.body.addEventListener('touchstart',function(){},false);
+</script>
+<script>
+    //        init JS  //固定写法
+    window.onerror = function(err) {
+        log('window.onerror: ' + err)
+    }
+
+function setupWebViewJavascriptBridge(callback) {
+    if (window.WebViewJavascriptBridge) { return callback(WebViewJavascriptBridge); }
+    if (window.WVJBCallbacks) { return window.WVJBCallbacks.push(callback); }
+    window.WVJBCallbacks = [callback];
+    var WVJBIframe = document.createElement('iframe');
+    WVJBIframe.style.display = 'none';
+    WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__';
+    document.documentElement.appendChild(WVJBIframe);
+    setTimeout(function() { document.documentElement.removeChild(WVJBIframe) }, 0)
+}
+setupWebViewJavascriptBridge(function(bridge) {
+                             
+                             //JS 注册一个方法  OC 调用
+                             bridge.registerHandler('chengji', function(data, responseCallback) {
+                                                    var responseData = { 'Javascript Says':'Right back atcha!' }
+                                                    showpage(data[0],data[1])
+                                                    
+                                                    })
+                             })
+    </script>
+</body>
+</html>

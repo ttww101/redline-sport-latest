@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title>指数</title> 
+<link rel="stylesheet" type="text/css" href="style.css"/>
+<script type="text/javascript"  src="jquery.min.js" ></script>
+<script type="text/javascript"  src="http://www.gunqiu.com/static/js/template.js"></script>
+ <script type="text/javascript" src="common.js" ></script>
+ <script type="text/javascript" src="echarts.js"  ></script>
+<script type="text/javascript"  src="zhishu.js"  ></script>
+
+
+<style>
+</style>
+</head>
+
+<body  ontouchstart="">
+<div class="header">
+
+</div> 
+<div class="content mt-50" >
+ <div id="one">  
+<div class="zstable">
+ <div class="thead">
+     <span>公司 </span> 
+     <span>&nbsp;</span>
+     <span>主胜 </span> 
+     <span>平局 </span> 
+     <span>客胜 </span> 
+     <span>返还率 </span>  
+     <span> </span> 
+ </div> 
+ <ul>  
+<script id="ouMacth" type="text/html">
+ {{each list as v}}
+  <li companyname="{{v.company}}" companyid="{{v.companyid}}" oddsid="{{v.oddsid}}" flag=4>
+     <span>{{if v.flag==1}}  <i class="zhu">主</i> {{/if}} {{if v.flag==2}} <i class="yi">E</i> {{/if}} <i class="{{v.namecss}}">{{v.company}}</i></span>
+     <span><span class="line"></span> <span class="text"><i>初</i> <i>即</i></span></span> 
+     <span class="font-12"><i>{{v.firsthomewin.toFixed(2)}}</i> <i class="{{v.homecolor}}">{{v.homewin.toFixed(2)}}</i></span>
+     <span class="font-12"><i>{{v.firststandoff.toFixed(2)}}</i> <i class="{{v.offcolor}}">{{v.standoff.toFixed(2)}}</i></span>
+     <span class="font-12"><i>{{v.firstguestwin.toFixed(2)}}</i> <i class="{{v.guestcolor}}">{{v.guestwin.toFixed(2)}}</i></span> 
+     <span class="font-12"><i>{{v.firstReturn}}</i> <i>{{v.secondReturn}}</i></span>  
+     <span>{{#v.imgs}}</span> 
+     </li>
+  {{/each}}
+ </script>
+ <div></div>
+ </ul>
+ </div> 
+</div> 
+
+<div id="two" style="display:none">
+ <div class="zstables">
+ <div class="thead">
+     <span>公司 </span> 
+     <span>&nbsp;</span>
+     <span>主队 </span> 
+     <span>盘口 </span> 
+     <span>客队 </span>  
+     <span> </span> 
+ </div> 
+ <ul>  
+<script id="yaMacth" type="text/html">
+ {{each list as v}}
+  <li companyname="{{v.company}}" companyid="{{v.companyid}}" oddsid="{{v.oddsid}}" flag=5>
+     <span><i class="{{v.namecss}}">{{v.company}}</i></span>
+     <span><span class="line"></span> <span class="text"><i>初</i> <i>即</i></span></span>
+     <span class="font-12"><i>{{v.firstupodds.toFixed(2)}}</i> <i class="{{v.homecolor}}">{{v.upodds.toFixed(2)}}</i></span>
+     <span class="font-12"><i>{{v.firstgoal}}</i> <i>{{v.goal}}</i></span>
+     <span class="font-12"><i>{{v.firstdownodds.toFixed(2)}}</i> <i class="{{v.guestcolor}}">{{v.downodds.toFixed(2)}}</i></span>  
+     <span>{{#v.imgs}}</span> 
+     </li>
+  {{/each}}
+ </script> 
+ <div></div>
+ </ul>
+ </div> 
+</div>
+
+<div id="three" style="display:none">
+ <div class="zstables">
+ <div class="thead">
+     <span>公司 </span> 
+     <span>&nbsp;</span>
+     <span>大球 </span> 
+     <span>盘口 </span> 
+     <span>小球 </span>  
+     <span> </span> 
+ </div> 
+ <ul>  
+<script id="dxMacth" type="text/html">
+ {{each list as v}}
+  <li companyname="{{v.company}}" companyid="{{v.companyid}}" oddsid="{{v.oddsid}}" flag=6>
+     <span><i class="{{v.namecss}}">{{v.company}}</i></span>
+     <span><span class="line"></span> <span class="text"><i>初</i> <i>即</i></span></span>
+     <span class="font-12"><i>{{v.firstupodds.toFixed(2)}}</i> <i class="{{v.homecolor}}">{{v.upodds.toFixed(2)}}</i></span>
+     <span class="font-12"><i>{{v.firstgoal}}</i> <i>{{v.goal}}</i></span>
+     <span class="font-12"><i>{{v.firstdownodds.toFixed(2)}}</i> <i class="{{v.guestcolor}}">{{v.downodds.toFixed(2)}}</i></span>  
+     <span>{{#v.imgs}}</span> 
+     </li>
+  {{/each}}
+ </script> 
+ <div></div>
+ </ul>
+ </div>  
+
+</div>   
+
+    <div id="four" style="display:none">
+  <div class="zstable">
+ <div class="thead">
+     <span>公司 </span> 
+     <span>&nbsp;</span> 
+     <span>主胜 </span> 
+     <span>平局 </span> 
+     <span>客胜 </span> 
+     <span>返还率 </span>  
+     <span> </span> 
+ </div> 
+ <ul>   
+<script id="klMacth" type="text/html">
+ {{each list as v vk}}
+ {{if vk>2}}
+  <li  companyname="{{v.company}}" companyid="{{v.companyid}}" oddsid="{{v.oddsid}}" flag=4> 
+     <span>{{if v.flag==1}}  <i class="zhu">主</i> {{/if}} {{if v.flag==2}} <i class="yi">E</i> {{/if}} <i class="{{v.namecss}}">{{v.company}}</i></span>
+     <span><span class="line"></span> <span class="text"><i>初</i> <i>即</i></span></span> 
+     <span class="font-12"><i>{{v.firstWinKellyIdx.toFixed(2)}}</i> <i class="{{v.homekellycolor}}">{{v.winKellyIdx.toFixed(2)}}</i></span>
+     <span class="font-12"><i>{{v.firstDrawKellyIdx.toFixed(2)}}</i> <i class="{{v.offkellycolor}}">{{v.drawKellyIdx.toFixed(2)}}</i></span>
+     <span class="font-12"><i>{{v.firstLoseKellyIdx.toFixed(2)}}</i> <i class="{{v.guestkellycolor}}">{{v.loseKellyIdx.toFixed(2)}}</i></span> 
+     <span class="font-12"><i>{{v.firstReturn}}</i> <i>{{v.secondReturn}}</i></span>  
+     <span>{{#v.imgs}}</span> 
+     </li>
+	 {{/if}} 
+  {{/each}}
+ </script>
+ <div></div>
+ </ul>
+ </div> 
+</div>
+
+<div id="five" style="display:none">
+<div class="col">  
+ <div class="title2">
+   <span></span> <i>必发交易盈亏</i>  
+   <div class="canvasbot">
+    <span> <i class="red-bg"> </i> 胜</span> 
+    <span><i class="blue1-bg"> </i> 平 </span>
+    <span> <i class="green1-bg"> </i> 负</span>
+  </div>
+</div> 
+ 
+ <div class="canvas">
+    <div id="canvasDiv1"></div>
+    <span class="count"><i class="font-12">总交易量</i> <i class="font-20 font-big bifadeal face">0</i>  <i class="font-12">港元</i></span>
+</div>
+
+<div class="canvaList">
+    <span class="wdl1"> </span>
+    <span><i><em class="color-33 font-11">第</em><em class="red-color font-20 bifadealrank face">0</em><em class="color-33 font-11">位</em></i> <i class="font-11">交易量排名</i></span>
+    <span class="wdl2"> </span>
+    <span><i><em class="color-33 font-11">第</em><em class="red-color font-20 totaldealrank face">0</em><em class="color-33 font-11">位</em></i> <i class="font-11">亏损量排名</i></span>
+</div> 
+ </div> 
+
+<script id="bfMacth" type="text/html">
+ <div class="col">   
+ <table class="tableyk" cellpadding="0" cellspacing="0">
+    <thead>
+        <th width="50">赛果</th>
+        <th width="50">价位</th>
+        <th>成交量</th>
+        <th>盈亏</th> 
+        <th>冷热指数</th>
+    </thead>
+    <tbody> 
+    <tr>
+    <td>胜</td>
+    <td>{{winprice}}</td>
+    <td>{{winbifadeal}}</td>
+    <td>{{wintotaldeal}}</td>
+    <td class="{{winClass}}">{{windealhot}}</td>
+    </tr>
+    <tr>
+    <td>平</td>
+    <td>{{drawprice}}</td>
+    <td>{{drawbifadeal}}</td>
+    <td>{{drawtotaldeal}}</td>
+    <td class="{{drawClass}}">{{drawdealhot}}</td>
+    </tr>
+    <tr>
+    <td>负</td>
+    <td>{{lostprice}}</td>
+    <td>{{lostbifadeal}}</td>
+    <td>{{losttotaldeal}}</td>
+    <td class="{{lostClass}}">{{lostdealhot}}</td>
+    </tr>
+    </tbody>
+</table> 
+ </div> 
+   <div class="col mt-10"> 
+     <div class="title2"><span></span> <i>投注异常比例分布</i>  </div>  
+     <table class="tableyk" cellpadding="0" cellspacing="0">
+    <thead>
+    <th width="50">赛果</th>
+    <th width="50">价位</th>
+    <th width="50">概率</th>
+    <th>投注比</th> 
+    <th>误差</th> 
+    </thead>
+    <tbody>
+	<tr>
+	<td>胜</td>
+	<td>{{winprice}}</td>
+	<td>{{winprobability}}</td>
+	<td>{{windealrate}}</td>
+	<td class="{{windevClass}}">{{windeviation}}</td>
+	</tr>
+	<tr>
+	<td>平</td>
+	<td>{{drawprice}}</td>
+	<td>{{drawprobability}}</td>
+	<td>{{drawdealrate}}</td>
+	<td class="{{drawdevClass}}">{{drawdeviation}}</td>
+	</tr>
+	<tr>
+	<td>负</td>
+	<td>{{lostprice}}</td>
+	<td>{{lostprobability}}</td>
+	<td>{{lostdealrate}}</td>
+	<td class="{{lostdevClass}}">{{lostdeviation}}</td>
+	</tr> 
+    </tbody>
+</table> 
+ </div>  
+ </script> 
+ 
+  <div> </div>
+ </div>
+ 
+ 
+</div>  
+ 
+
+<script>
+  document.body.addEventListener('touchstart',function(){},false);
+</script>
+ 
+</body>
+</html>

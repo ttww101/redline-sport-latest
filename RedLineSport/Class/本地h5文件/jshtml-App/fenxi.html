@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<title>分析</title> 
+<link rel="stylesheet" type="text/css" href="style.css" />
+<script type="text/javascript"  src="jquery.min.js"  ></script>
+<script type="text/javascript"  src="http://www.gunqiu.com/static/js/template.js"></script>
+<script type="text/javascript" src="common.js" ></script> 
+<script type="text/javascript"  src="jiben.js" ></script>
+<style>
+</style>
+</head>
+
+<body  ontouchstart="" class="white"> 
+<div class="content">
+<dl>
+<!--基本面-->
+ <dd id="zhsl"> 
+ <h3><span class="line"></span>   <i>综合实力</i>   <b class="down"></b>  </h3>  
+<div class="col toggle"> 
+ <div class="zhsl"> 
+ <ul>
+ <li> 
+ <span class="text"> 
+   <i><em class="zlhomewin">0</em>胜<em class="zlhomedraw">0</em>平<em class="zlhomelose">0</em>负 积<em class="red-color zlhomejf font-11">0</em>分</i>  
+   <i>战力</i>  
+   <i><em class="zlguestwin">0</em>胜<em class="zlguestdraw">0</em>平<em class="zlguestlose">0</em>负 积<em class="blue-color zlguestjf font-11">0</em>分</i> 
+   </span>
+ <span class="count">  <i class="zlwidth"> </i>  <i> </i>  </span>
+ </li>
+ <li> 
+ <span class="text"> 
+   <i><em class="zkhomewin">0</em>胜<em class="zkhomedraw">0</em>平<em class="zkhomelose">0</em>负 积<em class="red-color zkhomejf font-11">0</em>分</i>  
+   <i>主客</i>  
+   <i><em class="zkguestwin">0</em>胜<em class="zkguestdraw">0</em>平<em class="zkguestlose">0</em>负 积<em class="blue-color zkguestjf font-11">0</em>分</i> 
+   </span>
+ <span class="count">  <i  class="zkwidth"> </i>  <i> </i>  </span>
+ </li>
+ <li> 
+ <span class="text"> 
+   <i>均场进球<em class="red-color gjhomeget font-11">0</em>个</i>  
+   <i>攻击</i>  
+   <i>均场进球<em class="blue-color gjguestget font-11">0</em>个</i> 
+   </span>
+  <span class="count">  <i  class="gjwidth"> </i>  <i> </i>  </span>
+ </li>
+ <li> 
+ <span class="text"> 
+    <i>均场失球<em class="red-color fshomelose font-11">0</em>个</i>  
+    <i>防守</i>  
+    <i>均场失球<em class="blue-color fsguestlose font-11">0</em>个</i>  
+   </span>
+ <span class="count">  <i class="fswidth"> </i>  <i> </i>  </span>
+ </li> 
+ </ul>
+  <p>根据近10场赛事统计主客数据，总额计算出实力差异</p>
+ </div>
+</div>
+</dd>
+
+<!--SB赛前指数--> 
+  <dd id="prelist"> 
+ <h3><span class="line"></span>   <i>SB赛前指数</i>  <b class="down"></b>  </h3> 
+ <div class="col toggle">  
+ <script id="preMatch" type="text/html">  
+  <table cellpadding="0" cellspacing="0" class="tablefx">
+<thead>
+<tr>
+<th width="50">指数</th>
+<th>初指</th>
+<th>即时</th> 
+</tr>
+</thead>
+<tbody>
+<tr>
+ {{if list.spf!=undefined}}
+<td>欧指</td>
+<td><i>{{list.spf.firstWin}}</i> <i>{{list.spf.firstDraw}}</i> <i>{{list.spf.firstLose}}</i></td>
+<td><i style="color:{{list.spf.winColor}}">{{list.spf.finalWin}}</i> <i  style="color:{{list.spf.drawColor}}">{{list.spf.finalDraw}}</i> <i  style="color:{{list.spf.loseColor}}">{{list.spf.finalLose}}</i></td> 
+</tr>
+{{/if}}
+ {{if list.ya!=undefined}}
+<tr>
+<td>亚指</td>
+<td><i>{{list.ya.firstWin}}</i> <i>{{list.ya.firstDraw}}</i> <i>{{list.ya.firstLose}}</i></td>
+<td><i style="color:{{list.ya.winColor}}">{{list.ya.finalWin}}</i> <i  style="color:{{list.ya.drawColor}}">{{list.ya.finalDraw}}</i> <i  style="color:{{list.ya.loseColor}}">{{list.ya.finalLose}}</i></td> 
+
+</tr>
+{{/if}}
+ {{if list.dx!=undefined}}
+<tr>
+<td>进球数</td>
+<td><i>{{list.dx.firstWin}}</i> <i>{{list.dx.firstDraw}}</i> <i>{{list.dx.firstLose}}</i></td>
+<td><i style="color:{{list.dx.winColor}}">{{list.dx.finalWin}}</i> <i  style="color:{{list.dx.drawColor}}">{{list.dx.finalDraw}}</i> <i  style="color:{{list.dx.loseColor}}">{{list.dx.finalLose}}</i></td> 
+
+</tr>
+{{/if}}
+</tbody>
+</table> 
+ </div>
+</script>
+<div></div>
+</div>
+</dd>
+ <!--积分排名--> 
+ <dd id="jfpmlist"> 
+ <h3><span class="line"></span>   <i>积分排名</i>   <b class="down"></b>  </h3>  
+<div class="col toggle"> 
+ <script id="jfpmMacth" type="text/html">    
+ {{if kind==1}}
+{{if hScore.length>0}}
+   <div class="jftit"><span>{{homename}}</span> </div> 
+ <table cellpadding="0" cellspacing="0" class="tablefx">
+<thead>
+<tr>
+<th width="50">全场</th>
+<th>赛</th> 
+<th>胜/平/负</th> 
+<th>得/失/净</th>
+<th>积分</th>
+<th>排名</th>
+<th>胜率</th>
+</tr>
+</thead>
+<tbody> 
+{{each hScore as v vk}}
+{{if v.name=="主/总"}}
+<tr>
+<td>全</td>
+<td>{{v.totalMatch}}</td>
+<td>{{v.winScore}}/{{v.flatScore}}/{{v.failScore}}</td>
+<td>{{v.totalHomescore}}/{{v.totalGuestscore}}/{{v.totalJingscore}}</td>
+<td>{{v.totalScore}}</td>
+<td>{{v.rank}}</td>
+<td>{{v.winRate}}</td>
+</tr>
+{{/if}}
+{{if v.name=="主/主"}}
+<tr>
+<td>主</td>
+<td>{{v.totalMatch}}</td>
+<td>{{v.winScore}}/{{v.flatScore}}/{{v.failScore}}</td>
+<td>{{v.totalHomescore}}/{{v.totalGuestscore}}/{{v.totalJingscore}}</td>
+<td>{{v.totalScore}}</td>
+<td>{{v.rank}}</td>
+<td>{{v.winRate}}</td>
+</tr>
+{{/if}}
+
+{{/each}} 
+</tbody>
+</table> 
+{{/if}}
+
+{{if gScore.length>0}}
+   <div class="jftit"><span>{{guestname}}</span> </div> 
+ <table cellpadding="0" cellspacing="0" class="tablefx">
+<thead>
+<tr>
+<th width="50">全场</th>
+<th>赛</th> 
+<th>胜/平/负</th> 
+<th>得/失/净</th>
+<th>积分</th>
+<th>排名</th>
+<th>胜率</th>
+</tr>
+</thead> 
+<tbody> 
+{{each gScore as v vk}}
+{{if v.name=="客/总"}}
+<tr>
+<td>全</td>
+<td>{{v.totalMatch}}</td>
+<td>{{v.winScore}}/{{v.flatScore}}/{{v.failScore}}</td>
+<td>{{v.totalHomescore}}/{{v.totalGuestscore}}/{{v.totalJingscore}}</td>
+<td>{{v.totalScore}}</td>
+<td>{{v.rank}}</td>
+<td>{{v.winRate}}</td>
+</tr>
+{{/if}}
+{{if v.name=="客/客"}}
+<tr>
+<td>客</td>
+<td>{{v.totalMatch}}</td>
+<td>{{v.winScore}}/{{v.flatScore}}/{{v.failScore}}</td>
+<td>{{v.totalHomescore}}/{{v.totalGuestscore}}/{{v.totalJingscore}}</td>
+<td>{{v.totalScore}}</td>
+<td>{{v.rank}}</td>
+<td>{{v.winRate}}</td>
+</tr>
+{{/if}}
+
+{{/each}} 
+</tbody> 
+</table> 
+{{/if}}
+{{else}}
+ <table cellpadding="0" cellspacing="0" class="tablefx">
+<thead>
+<tr>
+<th>球队</th>
+<th>赛</th> 
+<th>胜/平/负</th> 
+<th>得/失/净</th>
+<th>积分</th>
+<th>排名</th>
+<th>胜率</th>
+</tr>
+</thead>
+<tbody> 
+{{each score as v}}
+<tr>
+<td><em class="homename">{{v.name}}</em></td>
+<td>{{v.totalMatch}}</td>
+<td>{{v.winScore}}/{{v.flatScore}}/{{v.failScore}}</td> 
+<td>{{v.totalHomescore}}/{{v.totalGuestscore}}/{{v.totalJingscore}}</td>
+<td>{{v.totalScore}}</td>
+<td>{{v.rank}}</td>
+<td>{{v.winRate}}</td>
+</tr>
+{{/each}} 
+</tbody>
+</table>   
+{{/if}} 
+</script>           
+ <div></div> 
+           
+   </div>
+ </dd>
+  <!--战绩特征-->  
+ <dd id="zjtzlist"> 
+ <h3><span class="line"></span>   <i>战绩特征</i>  <b class="down"></b>  </h3>  
+ <div class="col toggle">
+ <script id="zjtzMacth" type="text/html">    
+ <table cellpadding="0" cellspacing="0" class="tablefx1">
+<thead>
+<tr>
+<th width="100">{{name}}</th> 
+<th>胜</th> 
+<th>平</th>
+<th>负</th> 
+</tr>
+</thead>
+<tbody> 
+<tr>
+<td>{{hbeforeName}}</td>  
+<td>{{hbeforeWin}}</td>
+<td>{{hbeforeDraw}}</td> 
+<td>{{hbeforeLose}}</td> 
+</tr>
+<tr>
+<td>{{hafterName}}</td>  
+<td>{{hafterWin}}</td>
+<td>{{hafterDraw}}</td> 
+<td>{{hafterLose}}</td> 
+</tr>
+<tr>
+<td>{{gbeforeName}}</td>  
+<td>{{gbeforeWin}}</td>
+<td>{{gbeforeDraw}}</td> 
+<td>{{gbeforeLose}}</td> 
+</tr>
+<tr>
+<td>{{gafterName}}</td>  
+<td>{{gafterWin}}</td>
+<td>{{gafterDraw}}</td> 
+<td>{{gafterLose}}</td> 
+</tr> 
+</tbody>
+</table>   
+ </script>
+ <div></div>
+ 
+ </div>
+ </dd>
+ <!--历史交锋--> 
+ <dd id="hislist">  
+ <h3><span class="line"></span>   <i>历史交锋</i>   <span class="check"><i><em></em> 主客相同</i> </span> <b class="down"></b>  </h3>   
+<div class="col toggle">  
+ <div id="one">
+	 <script id="hisMacth" type="text/html"> 
+	 <div class="jfcount">
+       <ul>
+       <li> <span class="red-bg" style="width:{{hisimg.winrate}}%"> </span> <span style="width:{{hisimg.drawrate}}%"> </span> <span class="green-bg"  style="width:{{hisimg.lostrate}}%"> </span>  </li>
+       <li><i class="red-color">胜{{hisimg.lswin}}场</i> <i class="blue-color">平{{hisimg.lsdraw}}场</i> <i class="green-color">负{{hisimg.lslost}}场</i></li> 
+       </ul> <p>近{{hisimg.totalMatch}}场交锋， 胜率<em class="red-color">{{hisimg.spfRate}}</em> 让球胜率<em class="red-color">{{hisimg.yaRate}}</em> 大球率<em class="red-color">{{hisimg.dxRate}}</em></p>
+      </div> 
+         
+       <table cellpadding="0" cellspacing="0" class="tablelsjf mt-10">
+    <thead>
+    <tr>
+   <th>赛事</th>
+	<th class="home" width="85">主队</th>
+	<th width="35">比分</th>
+	<th class="guest" width="85">客队</th>
+    <th>让球</th>
+    <th>大小</th>  
+    </tr>
+    </thead>
+    <tbody>  
+    {{each list as v}}
+    <tr> 
+    <td>{{v.league}}<i>{{v.mtime.substr(2,10)}}</i></td>
+    <td class="home"><em class="homename {{v.homecolor}}">{{v.homeTeam}}</em></td>
+    <td>{{v.score}}<i>{{v.halfscore}}</i></td>
+    <td class="guest"><em class="guestname {{v.guestcolor}}">{{v.guestTeam}}</em></td>
+    <td class="{{v.pancolor}}">{{v.letgoal}}<em>{{v.pan}}</em></td>
+    <td class="{{v.dxpancolor}}">{{v.total}}<em>{{v.dxpan}}</em></td> 
+    </tr>
+     {{/each}}  
+    </tbody>
+    </table>  
+      </script>
+     <div></div>
+</div>
+
+<div id="two" style="display:none;">
+	 <script id="hisSameMacth" type="text/html"> 
+        <div class="jfcount">
+       <ul>
+       <li> <span class="red-bg" style="width:{{hisimg.winrate}}%"> </span> <span style="width:{{hisimg.drawrate}}%"> </span> <span class="green-bg"  style="width:{{hisimg.lostrate}}%"> </span>  </li>
+       <li><i class="red-color">胜{{hisimg.lswin}}场</i> <i class="blue-color">平{{hisimg.lsdraw}}场</i> <i class="green-color">负{{hisimg.lslost}}场</i></li> 
+       </ul> <p>近{{hisimg.totalMatch}}场交锋， 胜率<em class="red-color">{{hisimg.spfRate}}</em> 让球胜率<em class="red-color">{{hisimg.yaRate}}</em> 大球率<em class="red-color">{{hisimg.dxRate}}</em></p>
+      </div> 
+         
+       <table cellpadding="0" cellspacing="0" class="tablelsjf mt-10">
+    <thead>
+    <tr>
+    <th>赛事</th>
+	<th class="home" width="85">主队</th>
+	<th width="35">比分</th>
+	<th class="guest" width="85">客队</th>
+    <th>让球</th>
+    <th>大小</th>  
+    </tr>
+    </thead>
+    <tbody>  
+    {{each list as v}}
+    <tr> 
+    <td>{{v.league}}<i>{{v.mtime.substr(2,10)}}</i></td>
+    <td class="home"><em class="homename {{v.homecolor}}">{{v.homeTeam}}</em></td>
+    <td>{{v.score}}<i>{{v.halfscore}}</i></td>
+    <td class="guest"><em class="guestname {{v.guestcolor}}">{{v.guestTeam}}</em></td>
+    <td class="{{v.pancolor}}">{{v.letgoal}}<em>{{v.pan}}</em></td>
+    <td class="{{v.dxpancolor}}">{{v.total}}<em>{{v.dxpan}}</em></td> 
+    </tr>
+     {{/each}}  
+    </tbody>
+    </table>  
+      </script>
+     <div></div>
+</div>
+ 
+ </div> 
+ 
+ 
+</dd>
+
+ <!--近期战绩-->  
+ <dd id="nearlist"> 
+ <h3><span class="line"></span>   <i>近期战绩</i>   <span class="check"><i><em></em> 同主客</i> <i><em></em> 同赛事</i></span>  <b class="down"></b>  </h3>  
+<div class="col toggle">  
+ <script id="nearMacth" type="text/html"> 
+ <div id="one">
+			{{if homeAll.list!=undefined}}
+ <div class="jftit"><span>{{homename}}</span><p>近{{homeAll.totalMatch}}场，<em class="red-color">胜{{homeAll.win}}</em><em class="blue-color">平{{homeAll.draw}}</em><em class="green-color">负{{homeAll.lose}}</em>，胜率<em class="red-color">{{homeAll.spfRate}}</em> 让球胜率<em class="red-color">{{homeAll.yaRate}}</em> 大球率<em class="red-color">{{homeAll.dxRate}}</em></p> </div>
+  
+       <table cellpadding="0" cellspacing="0" class="tablelsjf">
+            <thead>
+            <tr>
+			<th>赛事</th>
+		    <th class="home" width="85">主队</th>
+			<th width="35">比分</th>
+			<th class="guest" width="85">客队</th>
+			<th>让球</th>
+			<th>大小</th> 
+            </tr>
+            </thead>
+            <tbody> 
+			  {{each homeAll.list as v}}
+				<tr>
+				<td>{{v.league}}<i>{{v.mtime.substr(2,10)}}</i></td>
+				<td class="home"><em class="homename {{v.homecolor}}">{{v.homeTeam}}</em></td>
+				<td>{{v.score}}<i>{{v.halfscore}}</i></td>
+				<td class="guest"><em class="guestname {{v.guestcolor}}">{{v.guestTeam}}</em></td>
+				<td class="{{v.pancolor}}">{{v.letgoal}}<em>{{v.pan}}</em></td>
+				<td class="{{v.dxpancolor}}">{{v.total}}<em>{{v.dxpan}}</em></td> 
+				</tr>
+			  {{/each}}
+            </tbody>
+     </table>  
+		  {{/if}}
+			{{if guestAll.list!=undefined}}
+   <div class="jftit"><span>{{guestname}}</span><p>近{{guestAll.totalMatch}}场，<em class="red-color">胜{{guestAll.win}}</em><em class="blue-color">平{{guestAll.draw}}</em><em class="green-color">负{{guestAll.lose}}</em>，胜率<em class="red-color">{{guestAll.spfRate}}</em> 让球胜率<em class="red-color">{{guestAll.yaRate}}</em> 大球率<em class="red-color">{{guestAll.dxRate}}</em></p> </div>
+     <table cellpadding="0" cellspacing="0" class="tablelsjf"> 
+            <thead>
+            <tr>
+           <th>赛事</th>
+		    <th class="home" width="85">主队</th>
+			<th width="35">比分</th>
+			<th class="guest" width="85">客队</th>
+			<th>让球</th>
+			<th>大小</th> 
+            </tr>
+            </thead>
+            <tbody> 
+			  {{each guestAll.list as v}}
+				<tr>
+				<td>{{v.league}}<i>{{v.mtime.substr(2,10)}}</i></td>
+				<td class="home"><em class="homename {{v.homecolor}}">{{v.homeTeam}}</em></td>
+				<td>{{v.score}}<i>{{v.halfscore}}</i></td>
+				<td class="guest"><em class="guestname {{v.guestcolor}}">{{v.guestTeam}}</em></td>
+				<td class="{{v.pancolor}}">{{v.letgoal}}<em>{{v.pan}}</em></td>
+				<td class="{{v.dxpancolor}}">{{v.total}}<em>{{v.dxpan}}</em></td> 
+				</tr>
+			  {{/each}}
+            </tbody>
+     </table>  
+		  {{/if}}
+ </div>  
+ <div id="two" style="display:none">
+			{{if home.list!=undefined}}
+  <div class="jftit"><span>{{homename}}</span><p>近{{home.totalMatch}}场，<em class="red-color">胜{{home.win}}</em><em class="blue-color">平{{home.draw}}</em><em class="green-color">负{{home.lose}}</em>，胜率<em class="red-color">{{home.spfRate}}</em> 让球胜率<em class="red-color">{{home.yaRate}}</em> 大球率<em class="red-color">{{home.dxRate}}</em></p> </div>
+
+       <table cellpadding="0" cellspacing="0" class="tablelsjf">
+            <thead>
+            <tr>
+			<th>赛事</th>
+		    <th class="home" width="85">主队</th>
+			<th width="35">比分</th>
+			<th class="guest" width="85">客队</th>
+			<th>让球</th>
+			<th>大小</th> 
+            </tr>
+            </thead>
+            <tbody> 
+			  {{each home.list as v}}
+				<tr>
+				<td>{{v.league}}<i>{{v.mtime.substr(2,10)}}</i></td>
+				<td class="home"><em class="homename {{v.homecolor}}">{{v.homeTeam}}</em></td>
+				<td>{{v.score}}<i>{{v.halfscore}}</i></td>
+				<td class="guest"><em class="guestname {{v.guestcolor}}">{{v.guestTeam}}</em></td>
+				<td class="{{v.pancolor}}">{{v.letgoal}}<em>{{v.pan}}</em></td>
+				<td class="{{v.dxpancolor}}">{{v.total}}<em>{{v.dxpan}}</em></td> 
+				</tr>
+			  {{/each}}
+            </tbody>
+     </table>  
+		  {{/if}}
+			{{if guest.list!=undefined}}
+   <div class="jftit"><span>{{guestname}}</span><p>近{{guest.totalMatch}}场，<em class="red-color">胜{{guest.win}}</em><em class="blue-color">平{{guest.draw}}</em><em class="green-color">负{{guest.lose}}</em>，胜率<em class="red-color">{{guest.spfRate}}</em> 让球胜率<em class="red-color">{{guest.yaRate}}</em> 大球率<em class="red-color">{{guest.dxRate}}</em></p> </div>
+  <table cellpadding="0" cellspacing="0" class="tablelsjf">
+
+            <thead>
+            <tr>
+           <th>赛事</th>
+		    <th class="home" width="85">主队</th>
+			<th width="35">比分</th>
+			<th class="guest" width="85">客队</th>
+			<th>让球</th>
+			<th>大小</th> 
+            </tr>
+            </thead>
+            <tbody> 
+			  {{each guest.list as v}}
+				<tr>
+				<td>{{v.league}}<i>{{v.mtime.substr(2,10)}}</i></td>
+				<td class="home"><em class="homename {{v.homecolor}}">{{v.homeTeam}}</em></td>
+				<td>{{v.score}}<i>{{v.halfscore}}</i></td>
+				<td class="guest"><em class="guestname {{v.guestcolor}}">{{v.guestTeam}}</em></td>
+				<td class="{{v.pancolor}}">{{v.letgoal}}<em>{{v.pan}}</em></td>
+				<td class="{{v.dxpancolor}}">{{v.total}}<em>{{v.dxpan}}</em></td> 
+				</tr>
+			  {{/each}}
+            </tbody>
+     </table>
+		  {{/if}}
+ </div>  
+ 
+ <div id="three" style="display:none">
+	 {{if hallSclass.list!=undefined}}
+  <div class="jftit"><span>{{homename}}</span><p>近{{hallSclass.totalMatch}}场，<em class="red-color">胜{{hallSclass.win}}</em><em class="blue-color">平{{hallSclass.draw}}</em><em class="green-color">负{{hallSclass.lose}}</em>，胜率<em class="red-color">{{hallSclass.spfRate}}</em> 让球胜率<em class="red-color">{{hallSclass.yaRate}}</em> 大球率<em class="red-color">{{hallSclass.dxRate}}</em></p> </div>
+
+       <table cellpadding="0" cellspacing="0" class="tablelsjf">
+            <thead>
+            <tr>
+			<th>赛事</th>
+		    <th class="home" width="85">主队</th>
+			<th width="35">比分</th>
+			<th class="guest" width="85">客队</th>
+			<th>让球</th>
+			<th>大小</th> 
+            </tr>
+            </thead>
+            <tbody> 
+          {{each hallSclass.list as v}}
+            <tr>
+			<td>{{v.league}}<i>{{v.mtime.substr(2,10)}}</i></td>
+			<td class="home"><em class="homename {{v.homecolor}}">{{v.homeTeam}}</em></td>
+			<td>{{v.score}}<i>{{v.halfscore}}</i></td>
+			<td class="guest"><em class="guestname {{v.guestcolor}}">{{v.guestTeam}}</em></td>
+				<td class="{{v.pancolor}}">{{v.letgoal}}<em>{{v.pan}}</em></td>
+				<td class="{{v.dxpancolor}}">{{v.total}}<em>{{v.dxpan}}</em></td> 
+			</tr>
+          {{/each}}
+            </tbody>
+     </table>  
+	 {{/if}}
+	 {{if gallSclass.list!=undefined}}
+   <div class="jftit"><span>{{guestname}}</span><p>近{{gallSclass.totalMatch}}场，<em class="red-color">胜{{gallSclass.win}}</em><em class="blue-color">平{{gallSclass.draw}}</em><em class="green-color">负{{gallSclass.lose}}</em>，胜率<em class="red-color">{{gallSclass.spfRate}}</em> 让球胜率<em class="red-color">{{gallSclass.yaRate}}</em> 大球率<em class="red-color">{{gallSclass.dxRate}}</em></p> </div>
+     <table cellpadding="0" cellspacing="0" class="tablelsjf">
+
+            <thead>
+            <tr>
+           <th>赛事</th>
+		    <th class="home" width="85">主队</th>
+			<th width="35">比分</th>
+			<th class="guest" width="85">客队</th>
+			<th>让球</th>
+			<th>大小</th> 
+            </tr>
+            </thead>
+            <tbody> 
+          {{each gallSclass.list as v}}
+            <tr>
+			<td>{{v.league}}<i>{{v.mtime.substr(2,10)}}</i></td>
+			<td class="home"><em class="homename {{v.homecolor}}">{{v.homeTeam}}</em></td>
+			<td>{{v.score}}<i>{{v.halfscore}}</i></td>
+			<td class="guest"><em class="guestname {{v.guestcolor}}">{{v.guestTeam}}</em></td>
+				<td class="{{v.pancolor}}">{{v.letgoal}}<em>{{v.pan}}</em></td>
+				<td class="{{v.dxpancolor}}">{{v.total}}<em>{{v.dxpan}}</em></td> 
+			</tr>
+          {{/each}}
+            </tbody>
+     </table> 
+	 {{/if}}
+ </div>
+ 
+ 
+ <div id="four" style="display:none"> 
+	 {{if hSclass.list!=undefined}}
+  <div class="jftit"><span>{{homename}}</span><p>近{{hSclass.totalMatch}}场，<em class="red-color">胜{{hSclass.win}}</em><em class="blue-color">平{{hSclass.draw}}</em><em class="green-color">负{{hSclass.lose}}</em>，胜率<em class="red-color">{{hSclass.spfRate}}</em> 让球胜率<em class="red-color">{{hSclass.yaRate}}</em> 大球率<em class="red-color">{{hSclass.dxRate}}</em></p> </div>
+
+       <table cellpadding="0" cellspacing="0" class="tablelsjf">
+            <thead>
+            <tr>
+			<th>赛事</th>
+		    <th class="home" width="85">主队</th>
+			<th width="35">比分</th>
+			<th class="guest" width="85">客队</th>
+			<th>让球</th>
+			<th>大小</th> 
+            </tr>
+            </thead>
+            <tbody> 
+          {{each hSclass.list as v}}
+            <tr>
+			<td>{{v.league}}<i>{{v.mtime.substr(2,10)}}</i></td>
+			<td class="home"><em class="homename {{v.homecolor}}">{{v.homeTeam}}</em></td>
+			<td>{{v.score}}<i>{{v.halfscore}}</i></td>
+			<td class="guest"><em class="guestname {{v.guestcolor}}">{{v.guestTeam}}</em></td>
+				<td class="{{v.pancolor}}">{{v.letgoal}}<em>{{v.pan}}</em></td>
+				<td class="{{v.dxpancolor}}">{{v.total}}<em>{{v.dxpan}}</em></td> 
+			</tr>
+          {{/each}}
+            </tbody>
+     </table> 
+	 {{/if}}
+	 {{if gSclass.list!=undefined}} 
+   <div class="jftit"><span>{{guestname}}</span><p>近{{gSclass.totalMatch}}场，<em class="red-color">胜{{gSclass.win}}</em><em class="blue-color">平{{gSclass.draw}}</em><em class="green-color">负{{gSclass.lose}}</em>，胜率<em class="red-color">{{gSclass.spfRate}}</em> 让球胜率<em class="red-color">{{gSclass.yaRate}}</em> 大球率<em class="red-color">{{gSclass.dxRate}}</em></p> </div>
+     <table cellpadding="0" cellspacing="0" class="tablelsjf">
+
+            <thead>
+            <tr>
+           <th>赛事</th>
+		    <th class="home" width="85">主队</th>
+			<th width="35">比分</th>
+			<th class="guest" width="85">客队</th>
+			<th>让球</th>
+			<th>大小</th> 
+            </tr>
+            </thead>
+            <tbody> 
+          {{each gSclass.list as v}}
+            <tr>
+			<td>{{v.league}}<i>{{v.mtime.substr(2,10)}}</i></td>
+			<td class="home"><em class="homename {{v.homecolor}}">{{v.homeTeam}}</em></td>
+			<td>{{v.score}}<i>{{v.halfscore}}</i></td>
+			<td class="guest"><em class="guestname {{v.guestcolor}}">{{v.guestTeam}}</em></td>
+				<td class="{{v.pancolor}}">{{v.letgoal}}<em>{{v.pan}}</em></td>
+				<td class="{{v.dxpancolor}}">{{v.total}}<em>{{v.dxpan}}</em></td> 
+			</tr>
+          {{/each}}
+            </tbody>
+     </table>
+	 {{/if}} 
+ </div>
+ </script>
+ <div></div> 
+ 
+ </div>
+ </dd>
+ 
+ <!--数据对比--> 
+ 
+ <dd id="twoTeamlist"> 
+ <h3><span class="line"></span>   <i>数据对比</i> <span class="checkcount"><i class="dq">近5场</i><i>近10场</i><i>近15场</i></span>  <span class="check"><i><em></em> 同主客</i></span>  <b class="down"></b>  </h3>   
+  <div class="col toggle">
+ <script id="twoTeam" type="text/html"> 
+ <div id="one">
+ <div class="five"> 
+	 <table cellpadding="0" cellspacing="0" class="tablefx">
+	<thead>
+	<tr>
+	<th>球队</th>
+	<th>赛</th> 
+	<th>总进/均进</th> 
+	<th>总失/均失</th>
+	<th>胜率</th>
+	<th>平率</th>
+	<th>负率</th>
+	</tr>
+	</thead>
+	<tbody> 
+	<tr>
+	<td><em class="homename">{{homename}}</em></td> 
+	<td>{{v.homeAllFive.total}}</td>
+	<td>{{v.homeAllFive.get}}/{{v.homeAllFive.avgget}}</td>
+	<td>{{v.homeAllFive.loss}}/{{v.homeAllFive.avgloss}}</td>
+	<td>{{v.homeAllFive.winrate}}</td>
+	<td>{{v.homeAllFive.drawrate}}</td>
+	<td>{{v.homeAllFive.lostrate}}</td>
+	</tr> 
+	<tr>
+	<td><em class="guestname">{{guestname}}</em></td> 
+	<td>{{v.guestAllFive.total}}</td>
+	<td>{{v.guestAllFive.get}}/{{v.guestAllFive.avgget}}</td>
+	<td>{{v.guestAllFive.loss}}/{{v.guestAllFive.avgloss}}</td>
+	<td>{{v.guestAllFive.winrate}}</td>
+	<td>{{v.guestAllFive.drawrate}}</td>
+	<td>{{v.guestAllFive.lostrate}}</td>
+	</tr>  
+	</tbody>
+	</table>
+ </div>
+ <div class="ten" style="display:none">  
+	 <table cellpadding="0" cellspacing="0" class="tablefx">
+	<thead>
+	<tr>
+	<th>球队</th>
+	<th>赛</th> 
+	<th>总进/均进</th> 
+	<th>总失/均失</th>
+	<th>胜率</th>
+	<th>平率</th>
+	<th>负率</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+	<td><em class="homename">{{homename}}</em></td> 
+	<td>{{v.homeAllTen.total}}</td>
+	<td>{{v.homeAllTen.get}}/{{v.homeAllTen.avgget}}</td>
+	<td>{{v.homeAllTen.loss}}/{{v.homeAllTen.avgloss}}</td>
+	<td>{{v.homeAllTen.winrate}}</td>
+	<td>{{v.homeAllTen.drawrate}}</td>
+	<td>{{v.homeAllTen.lostrate}}</td>
+	</tr> 
+	<tr>
+	<td><em class="guestname">{{guestname}}</em></td> 
+	<td>{{v.guestAllTen.total}}</td>
+	<td>{{v.guestAllTen.get}}/{{v.guestAllTen.avgget}}</td>
+	<td>{{v.guestAllTen.loss}}/{{v.guestAllTen.avgloss}}</td>
+	<td>{{v.guestAllTen.winrate}}</td>
+	<td>{{v.guestAllTen.drawrate}}</td>
+	<td>{{v.guestAllTen.lostrate}}</td>
+	</tr> 
+	</tbody>
+	</table>
+ </div>
+ <div class="fifteen" style="display:none"> 
+	 <table cellpadding="0" cellspacing="0" class="tablefx">
+	<thead>
+	<tr>
+	<th>球队</th>
+	<th>赛</th> 
+	<th>总进/均进</th> 
+	<th>总失/均失</th>
+	<th>胜率</th>
+	<th>平率</th>
+	<th>负率</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+	<td><em class="homename">{{homename}}</em></td> 
+	<td>{{v.homeAllFifteen.total}}</td>
+	<td>{{v.homeAllFifteen.get}}/{{v.homeAllFifteen.avgget}}</td>
+	<td>{{v.homeAllFifteen.loss}}/{{v.homeAllFifteen.avgloss}}</td>
+	<td>{{v.homeAllFifteen.winrate}}</td>
+	<td>{{v.homeAllFifteen.drawrate}}</td>
+	<td>{{v.homeAllFifteen.lostrate}}</td>
+	</tr> 
+	<tr>
+	<td><em class="guestname">{{guestname}}</em></td> 
+	<td>{{v.guestAllFifteen.total}}</td>
+	<td>{{v.guestAllFifteen.get}}/{{v.guestAllFifteen.avgget}}</td>
+	<td>{{v.guestAllFifteen.loss}}/{{v.guestAllFifteen.avgloss}}</td>
+	<td>{{v.guestAllFifteen.winrate}}</td>
+	<td>{{v.guestAllFifteen.drawrate}}</td>
+	<td>{{v.guestAllFifteen.lostrate}}</td>
+	</tr> 
+	</tbody>
+	</table>
+ </div> 
+ </div> 
+ <div id="two" style="display:none">
+     <div class="five"> 
+	 <table cellpadding="0" cellspacing="0" class="tablefx">
+	<thead>
+	<tr>
+	<th>球队</th>
+	<th>赛</th> 
+	<th>总进/均进</th> 
+	<th>总失/均失</th>
+	<th>胜率</th>
+	<th>平率</th>
+	<th>负率</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+	<td><em class="homename">{{homename}}</em></td> 
+	<td>{{v.homeFive.total}}</td>
+	<td>{{v.homeFive.get}}/{{v.homeFive.avgget}}</td>
+	<td>{{v.homeFive.loss}}/{{v.homeFive.avgloss}}</td>
+	<td>{{v.homeFive.winrate}}</td>
+	<td>{{v.homeFive.drawrate}}</td>
+	<td>{{v.homeFive.lostrate}}</td>
+	</tr> 
+	<tr>
+	<td><em class="guestname">{{guestname}}</em></td> 
+	<td>{{v.guestFive.total}}</td>
+	<td>{{v.guestFive.get}}/{{v.guestFive.avgget}}</td>
+	<td>{{v.guestFive.loss}}/{{v.guestFive.avgloss}}</td>
+	<td>{{v.guestFive.winrate}}</td>
+	<td>{{v.guestFive.drawrate}}</td>
+	<td>{{v.guestFive.lostrate}}</td>
+	</tr> 
+	</tbody>
+	</table>
+ </div>
+ <div class="ten" style="display:none"> 
+	 <table cellpadding="0" cellspacing="0" class="tablefx">
+	<thead>
+	<tr>
+	<th>球队</th>
+	<th>赛</th> 
+	<th>总进/均进</th> 
+	<th>总失/均失</th>
+	<th>胜率</th>
+	<th>平率</th>
+	<th>负率</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+	<td><em class="homename">{{homename}}</em></td> 
+	<td>{{v.homeTen.total}}</td>
+	<td>{{v.homeTen.get}}/{{v.homeTen.avgget}}</td>
+	<td>{{v.homeTen.loss}}/{{v.homeTen.avgloss}}</td>
+	<td>{{v.homeTen.winrate}}</td>
+	<td>{{v.homeTen.drawrate}}</td>
+	<td>{{v.homeTen.lostrate}}</td>
+	</tr> 
+	<tr>
+	<td><em class="guestname">{{guestname}}</em></td> 
+	<td>{{v.guestTen.total}}</td>
+	<td>{{v.guestTen.get}}/{{v.guestTen.avgget}}</td>
+	<td>{{v.guestTen.loss}}/{{v.guestTen.avgloss}}</td>
+	<td>{{v.guestTen.winrate}}</td>
+	<td>{{v.guestTen.drawrate}}</td>
+	<td>{{v.guestTen.lostrate}}</td>
+	</tr> 
+	</tbody>
+	</table>
+ </div>
+ <div class="fifteen" style="display:none"> 
+	 <table cellpadding="0" cellspacing="0" class="tablefx">
+	<thead>
+	<tr>
+	<th>球队</th>
+	<th>赛</th> 
+	<th>总进/均进</th> 
+	<th>总失/均失</th>
+	<th>胜率</th>
+	<th>平率</th>
+	<th>负率</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+	<td><em class="homename">{{homename}}</em></td> 
+	<td>{{v.homeFifteen.total}}</td>
+	<td>{{v.homeFifteen.get}}/{{v.homeFifteen.avgget}}</td>
+	<td>{{v.homeFifteen.loss}}/{{v.homeFifteen.avgloss}}</td>
+	<td>{{v.homeFifteen.winrate}}</td>
+	<td>{{v.homeFifteen.drawrate}}</td>
+	<td>{{v.homeFifteen.lostrate}}</td>
+	</tr> 
+	<tr>
+	<td><em class="guestname">{{guestname}}</em></td> 
+	<td>{{v.guestFifteen.total}}</td>
+	<td>{{v.guestFifteen.get}}/{{v.guestFifteen.avgget}}</td>
+	<td>{{v.guestFifteen.loss}}/{{v.guestFifteen.avgloss}}</td>
+	<td>{{v.guestFifteen.winrate}}</td>
+	<td>{{v.guestFifteen.drawrate}}</td>
+	<td>{{v.guestFifteen.lostrate}}</td>
+	</tr> 
+	</tbody>
+	</table>
+ </div> 
+ </div>
+   
+</script>
+<div></div>    
+  
+  </div>
+  </dd>
+   <!--历史相同指数--> 
+   <dd id="sameHislist"> 
+ <h3><span class="line"></span>   <i>历史相同指数</i>  <b class="down"></b>  </h3>   
+  <div class="col toggle"> 
+  <script id="sameHisTory" type="text/html"> 
+  {{if homeMatchs.length>0}}
+  <div class="jftit"><span>{{homeTeam}}</span> </div>
+    <table cellpadding="0" cellspacing="0" class="tablelsjf">
+<thead>
+<tr>
+<th>日期</th>
+<th>赛事</th>
+<th class="home">主队</th>
+<th>初指</th>
+<th class="guest">客队</th>
+<th>比分</th>
+<th>赛果</th> 
+</tr>
+</thead>
+<tbody>
+{{each homeMatchs as v}}
+<tr>
+<td>{{v.time3}}</td>
+<td>{{v.sclass.nameJs}}</td>
+<td class="home"><em class="homename {{v.homecolor}}">{{v.homeTeam}}</em></td>
+<td>{{v.yaFirstDrawCn}}</td>
+<td class="guest"><em class="guestname {{v.guestcolor}}">{{v.guestTeam}}</em></td>
+<td>{{v.homeScore}}-{{v.guestScore}}</td>
+<td class="{{v.yacolor}}">{{v.yaResult}}</td>
+</tr>
+{{/each}}
+</tbody>
+</table> 
+ {{/if}}
+  {{if guestMatchs.length>0}}
+  <div class="jftit"><span>{{guestName}}</span> </div>
+    <table cellpadding="0" cellspacing="0" class="tablelsjf">
+<thead>
+<tr>
+<th>日期</th>
+<th>赛事</th>
+<th class="home">主队</th>
+<th>初指</th>
+<th class="guest">客队</th>
+<th>比分</th>
+<th>赛果</th> 
+</tr>
+</thead>
+<tbody>
+{{each guestMatchs as v}}
+<tr>
+<td>{{v.time3}}</td>
+<td>{{v.sclass.nameJs}}</td>
+<td class="home"><em class="homename {{v.homecolor}}">{{v.homeTeam}}</em></td>
+<td>{{v.yaFirstDrawCn}}</td>
+<td class="guest"><em class="guestname {{v.guestcolor}}">{{v.guestTeam}}</em></td>
+<td>{{v.homeScore}}-{{v.guestScore}}</td>
+<td class="{{v.yacolor}}">{{v.yaResult}}</td>
+</tr>
+{{/each}}
+</tbody>
+</table> 
+ {{/if}}
+ </script>
+ <div></div>
+  
+  </div>
+  </dd>
+  
+ 
+ <!--未来赛事-->  
+<dd id="futurelist"> 
+ <h3><span class="line"></span>   <i>未来赛事</i>   <b class="down"></b>  </h3>  
+<div class="col toggle">   
+   <script id="futureMacth" type="text/html">
+       {{if hfuture.length>0}}
+     <div class="jftit"><span>{{homename}}</span> </div> 
+     <table cellpadding="0" cellspacing="0" class="tablelsjf">
+        <thead>
+        <tr>
+			<th>赛事</th>
+			<th class="home" width="85">主队</th>
+			<th width="35">比分</th>
+			<th class="guest" width="85">客队</th>
+			<th>相隔</th>  
+        </tr>
+        </thead>
+        <tbody>
+          {{each hfuture as v}} 
+        <tr> 
+		<td>{{v.league}}<i>{{v.mtime}}</i></td>
+		<td class="home"><em class="homename {{v.homecolor}}">{{v.homeName}}</em></td>
+		<td>vs</td>
+		<td class="guest"><em class="guestname {{v.guestcolor}}">{{v.guestName}}</em></td>
+		<td>{{v.time}}</td> 
+        </tr>  
+        {{/each}}
+        </tbody>
+    </table>
+    {{/if}}
+    {{if gfuture.length>0}}
+    <div class="jftit"><span>{{guestname}}</span></div>  
+     <table cellpadding="0" cellspacing="0" class="tablelsjf">
+        <thead>
+        <tr>
+			<th>赛事</th>
+			<th class="home" width="85">主队</th>
+			<th width="30">比分</th>
+			<th class="guest" width="85">客队</th>
+			<th>相隔</th> 
+        </tr>
+        </thead>
+        <tbody> 
+		{{each gfuture as v}} 
+        <tr>
+		<td>{{v.league}}<i>{{v.mtime}}</i></td>
+		<td class="home"><em class="homename {{v.homecolor}}">{{v.homeName}}</em></td>
+		<td>vs</td>
+		<td class="guest"><em class="guestname {{v.guestcolor}}">{{v.guestName}}</em></td>
+		<td>{{v.time}}</td> 
+        </tr>  
+      {{/each}} 
+        </tbody>
+</table>
+{{/if}}
+</script>
+<div></div> 
+ </div>
+ </dd>
+ <!--伤停情况-->  
+<dd id="stList"> 
+ <h3><span class="line"></span>   <i>伤停信息</i>   <b class="down"></b>  </h3>  
+<div class="col toggle">   
+  <script id="stMacth" type="text/html">   
+    <div class="zr-list"> 
+     <ul class="home"> 
+		  {{each hstati as v}} 
+			<li> <span><i class="count">{{v.number}}</i> <i class="name">{{v.name}}</i> <i class="position">[{{v.position}}]</i>  </span> </li> 
+		{{/each}}   
+	   </ul>
+	  <ul class="guest"> 
+	   {{each gstati as v}}  
+	       <li> <span> <i class="count">{{v.number}}</i> <i class="name">{{v.name}}</i>  <i class="position">[{{v.position}}]</i> </span> </li>   
+       {{/each}}  
+	  </ul> 
+   </div>  
+  </script>   
+ <div></div> 
+   
+ </div>
+  </dd>
+ </dl> 
+ </div>
+<script>
+  document.body.addEventListener('touchstart',function(){},false);
+</script>
+<script>
+    //        init JS  //固定写法
+    window.onerror = function(err) {
+        log('window.onerror: ' + err)
+    }
+
+function setupWebViewJavascriptBridge(callback) {
+    if (window.WebViewJavascriptBridge) { return callback(WebViewJavascriptBridge); }
+    if (window.WVJBCallbacks) { return window.WVJBCallbacks.push(callback); }
+    window.WVJBCallbacks = [callback];
+    var WVJBIframe = document.createElement('iframe');
+    WVJBIframe.style.display = 'none';
+    WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__';
+    document.documentElement.appendChild(WVJBIframe);
+    setTimeout(function() { document.documentElement.removeChild(WVJBIframe) }, 0)
+}
+setupWebViewJavascriptBridge(function(bridge) {
+                             
+                             //JS 注册一个方法  OC 调用
+                             bridge.registerHandler('tuijianPage', function(data, responseCallback) {
+                                                    var responseData = { 'Javascript Says':'Right back atcha!' }
+                                            
+                                                    appweb(data[0],data[1],data[2],data[3])
+                                                   
+                                                    })
+                             })
+    </script>
+</body>
+</html>

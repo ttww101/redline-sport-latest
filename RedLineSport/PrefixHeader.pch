@@ -1,0 +1,76 @@
+//
+//  PrefixHeader.pch
+//  GunQiuLive
+//
+//  Created by WQ_h on 15/11/11.
+//  Copyright (c) 2015年 WQ_h. All rights reserved.
+//
+
+#ifndef GunQiuLive_PrefixHeader_pch
+#define GunQiuLive_PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+//VC
+#import "RLSAppDelegate.h"
+#import "RLSMethods.h"
+#import "RLSHttpString.h"
+#import "UIView+Additions.h"
+#import "UIBarButtonItem+Addtions.h"
+#import "RLSLoginViewController.h"
+#import "SVProgressHUD.h"
+#import "MBProgressHUD.h"
+#import "UIImageView+WebCache.h"
+#import "UIButton+WebCache.h"
+#import "RLSUserModel.h"
+#import "RLSDCHttpRequest.h"
+#import "RLSHttpString.h"
+#import "RLSDependetNetMethods.h"
+#import "RLSUMStatisticsMgr.h"
+#import "RLSMessageSoundMgr.h"
+
+#import "MJRefresh.h"
+#import "RLSBasicTableView.h"
+#import "Masonry.h"
+#import "UITableView+FDTemplateLayoutCell.h"
+#import "RLSUniversalNetwork.h"
+#import "RLSOldMineViewController.h"
+#import "RLSUserViewController.h"
+#import "RLSWebVC.h"
+#import "UIScrollView+EmptyDataSet.h"
+//#import "JHChartHeader.h"
+#import "RedLineSport-Bridging-Header.h"
+#import "SDCycleScrollView.h"
+
+#import "RLSLMJScrollTextView.h"
+#import "RLSWKWebViewController.h"
+#import "RLSDCPageViewController.h"
+#import "RLSDCScrollVIew.h"
+
+#import "NSString+TextSize.h"
+#import "RLSLodingAnimateView.h"
+#import "RLSFenxiPageVC.h"
+
+
+#import "RLSFriendsVC.h"
+
+
+//.h
+#import "Numbers.h"
+#import "Urls.h"
+#import "Device.h"
+#import "Properties.h"
+#import "Contents.h"
+#import "ThirdPartKey.h"
+#import "RLSTokenModel.h"
+
+#import "RLSCacheObject.h"
+//记得在pch中导入APP的appdelegate的.h文件 方便在后面的各个类中使用宏APPDELEGATE
+// APPDELEGATE 宏定义的时候要加括号
+#define APPDELEGATE ((RLSAppDelegate *)[[UIApplication sharedApplication] delegate])
+
+
+
+
+#endif
