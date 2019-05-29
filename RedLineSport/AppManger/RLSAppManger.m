@@ -48,6 +48,12 @@
         self.bridge = [WebViewJavascriptBridge bridgeForWebView:_wkWebView];
     }
     __weak RLSAppManger *weakSelf = self;
+    [self.bridge registerHandler:@"guestId" handler:^(id data, WVJBResponseCallback responseCallback) {
+        NSArray *dataArr = [[NSUserDefaults standardUserDefaults] arrayForKey:@"experts"];
+        if (dataArr==nil) dataArr = @[];
+        NSString *ret = [self getJSONMessage:@{@"ids":dataArr}];
+        responseCallback(ret);
+    }];
     [self.bridge registerHandler:@"currentPage" handler:^(id data, WVJBResponseCallback responseCallback) {
         RLSJSModel *model =  [RLSJSModel yy_modelWithDictionary:@{
                                                             @"methdName":@"currentPage:",

@@ -65,8 +65,8 @@
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
-            <key>CFBundleURLName</key>
-            <string>redlinesport</string>
+			<key>CFBundleURLName</key>
+			<string>redlinesport</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>com.lineredsport.mobile</string>
@@ -74,7 +74,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>wechat</string>
@@ -115,9 +115,9 @@
 	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
-		<key>NSAllowsArbitraryLoadsInWebContent</key>
-		<true/>
 		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+		<key>NSAllowsArbitraryLoadsInWebContent</key>
 		<true/>
 	</dict>
 	<key>NSAppleMusicUsageDescription</key>
@@ -127,7 +127,7 @@
 	<key>NSCalendarsUsageDescription</key>
 	<string>访问日历</string>
 	<key>NSCameraUsageDescription</key>
-	<string>访问相机</string>
+	<string>修改头像和发布推荐时使用您的相机，是否允许?</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>始终访问位置</string>
 	<key>NSLocationUsageDescription</key>
@@ -139,7 +139,7 @@
 	<key>NSMotionUsageDescription</key>
 	<string>访问运动与健康</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>修改头像和发布推荐时使用您的相机，是否允许?</string>
+	<string>修改头像和发布推荐时使用您的相簿，是否允许?</string>
 	<key>NSRemindersUsageDescription</key>
 	<string>访问提醒事项</string>
 	<key>UIAppFonts</key>

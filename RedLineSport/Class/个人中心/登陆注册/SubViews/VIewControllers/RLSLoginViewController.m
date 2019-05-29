@@ -261,7 +261,7 @@
     [dictParameter setObject:PARAM_IS_NIL_ERROR([[NSUserDefaults standardUserDefaults] objectForKey:@"deviceTokenStr"]) forKey:@"uuid"];
     [[RLSDCHttpRequest shareInstance] sendRequestByMethod:@"post" WithParamaters:dictParameter PathUrlL:[NSString stringWithFormat:@"%@%@",APPDELEGATE.url_Server,url_loginAndRegister] ArrayFile:nil Start:^(id requestOrignal) {
         if (!_prograssHud) {
-        _prograssHud = [[MBProgressHUD alloc] initWithView:self.view];
+            _prograssHud = [[MBProgressHUD alloc] initWithView:self.view];
         }
         _prograssHud.mode = MBProgressHUDModeIndeterminate;
         _prograssHud.labelText = @"正在登录";

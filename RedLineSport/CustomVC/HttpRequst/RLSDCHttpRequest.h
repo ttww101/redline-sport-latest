@@ -16,6 +16,7 @@ typedef void(^requestFailure)(NSError *error, NSString *errorDict,id responseOri
 @interface RLSDCHttpRequest : NSObject
 @property (nonatomic, copy) NSString        *contentType;
 + (RLSDCHttpRequest *)shareInstance;
++ (RLSDCHttpRequest *)guestInstance;
 - (void)sendRequestByMethod:(NSString *)post
              WithParamaters:(NSDictionary *)parameters
                    PathUrlL:(NSString *)pathUrl

@@ -24,8 +24,20 @@ static AFHTTPRequestOperationManager *_afnetManager;
     NSString *version = [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"];
     [_afnetManager.requestSerializer setValue:[NSString stringWithFormat:@"gqapp/%@", version] forHTTPHeaderField:@"User-Agent"];
     return dcHttpRequset;
-    return nil;
 }
+
++ (RLSDCHttpRequest *)guestInstance {
+    static RLSDCHttpRequest *dcHttpRequset = nil;
+    static dispatch_once_t onceInitDCHttpRequest;
+    dispatch_once(&onceInitDCHttpRequest, ^{
+        dcHttpRequset = [[RLSDCHttpRequest alloc] init];
+    });
+    [_afnetManager.requestSerializer setValue:@"MTU1ODMzNjMyNTgzMV8xMDYyMDVfTU1DaG9jb2xhdGU=.TVRVMU9ETXpOak15TlRnek1WOHhNRFl5TURWZlRVMURhRzlqYjJ4aGRHVT10b2tlbkhwZEdyNks5TFR0OVJ1a0c=" forHTTPHeaderField:@"token"];
+    NSString *version = [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"];
+    [_afnetManager.requestSerializer setValue:[NSString stringWithFormat:@"gqapp/%@", version] forHTTPHeaderField:@"User-Agent"];
+    return dcHttpRequset;
+}
+
 - (id)init
 {
     self = [super init];
