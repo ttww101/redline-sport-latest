@@ -11,6 +11,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import "RLSCustmerTableBar.h"
 #import "RLSLotteryWebViewController.h"
+#import "JANALYTICSService.h"
 NSString *const GQTableBarControllerName = @"GQTableBarControllerName";
 NSString *const GQTabBarItemTitle = @"GQTabBarItemTitle";
 NSString *const GQTabBarItemImage = @"GQTabBarItemImage";
@@ -372,14 +373,29 @@ static CGFloat imageHeight = 66.f;
     }
     if ([self.viewControllers indexOfObject:viewController] == 0) {
         [MobClick event:@"faxian" label:@""];
+        JANALYTICSBrowseEvent * event = [[JANALYTICSBrowseEvent alloc] init];
+        event.name = @"home";
+        [JANALYTICSService eventRecord:event];
     } else if ([self.viewControllers indexOfObject:viewController] == 1) {
         [MobClick event:@"bifen" label:@""];
+        JANALYTICSBrowseEvent * event = [[JANALYTICSBrowseEvent alloc] init];
+        event.name = @"expert";
+        [JANALYTICSService eventRecord:event];
     } else if ([self.viewControllers indexOfObject:viewController] == 2) {
         [MobClick event:@"qingbao" label:@""];
+        JANALYTICSBrowseEvent * event = [[JANALYTICSBrowseEvent alloc] init];
+        event.name = @"game";
+        [JANALYTICSService eventRecord:event];
     } else if ([self.viewControllers indexOfObject:viewController] == 3) {
         [MobClick event:@"tjsy" label:@""];
+        JANALYTICSBrowseEvent * event = [[JANALYTICSBrowseEvent alloc] init];
+        event.name = @"info";
+        [JANALYTICSService eventRecord:event];
     } else if ([self.viewControllers indexOfObject:viewController] == 4) {
         [MobClick event:@"wode" label:@""];
+        JANALYTICSBrowseEvent * event = [[JANALYTICSBrowseEvent alloc] init];
+        event.name = @"me";
+        [JANALYTICSService eventRecord:event];
     }
     if (self.selectedIndex == [self.viewControllers indexOfObject:viewController]) {
         switch (tabBarController.selectedIndex) {

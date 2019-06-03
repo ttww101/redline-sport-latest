@@ -7,17 +7,13 @@
 @implementation RLSTabConfig
 - (RLSDCTabBarController *)tabBarController {
     if (_tabBarController == nil) {
-        _tabBarController = [[RLSDCTabBarController alloc]initWithItemArray:[self tabBarItemArray]];
+        _tabBarController = [[RLSDCTabBarController alloc]initWithItemArray:[self loadLocalTabBarConfig]];
         [[UITabBar appearance] setTranslucent:false];
     }
     return _tabBarController;
 }
 
-- (NSArray *)tabBarItemArray {
-    return [self loadLocalTableBarConfig];
-}
-
-- (NSArray *)loadLocalTableBarConfig {
+- (NSArray *)loadLocalTabBarConfig {
     NSDictionary *gameTabBarItemsAttributes = [self tabBarItemControllerName:@"RLSBifenViewController" title:@"赛事" defaultImage:@"bifen" selectImage:@"bifen-1"];
     NSDictionary *newsTabBarItemsAttributes = [self tabBarItemControllerName:@"RLSNewQingBaoViewController" title:@"资讯" defaultImage:@"qingbao" selectImage:@"qingbao-1"];
     

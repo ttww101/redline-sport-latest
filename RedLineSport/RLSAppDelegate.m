@@ -29,6 +29,11 @@
 #import "RLSLaunchView.h"
 #import "RLSAspectManager.h"
 #import "Contents.h"
+#import "JANALYTICSService.h"
+#import "JPUSHService.h"
+#ifdef NSFoundationVersionNumber_iOS_9_x_Max
+#import <UserNotifications/UserNotifications.h>
+#endif
 
 #define Config_Version @"configVersion"
 
@@ -116,6 +121,10 @@
     [self configPageStatistics];
     
     [self setupUM];
+    [JPUSHService setupWithOption:launchOptions appKey:@"2703d680b99429c1eea2d937"
+                          channel:@"channel"
+                 apsForProduction:true
+            advertisingIdentifier:nil];
     [self setUMShare];
     [self setUpBugly];
     [self svPreferrenceConf];
@@ -620,6 +629,19 @@
     [UMConfigure initWithAppkey:UMAppkey channel:@"App Store"];
 //    [UMConfigure setLogEnabled:YES]; // 上线时必须关掉
     
+    JANALYTICSLaunchConfig * config = [[JANALYTICSLaunchConfig alloc] init];
+    config.appKey = @"2703d680b99429c1eea2d937";
+    config.channel = @"channel";
+    [JANALYTICSService setupWithConfig:config];
+    
+    JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
+    entity.types = JPAuthorizationOptionAlert|JPAuthorizationOptionBadge|JPAuthorizationOptionSound|JPAuthorizationOptionProvidesAppNotificationSettings;
+    if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+        // 可以添加自定义 categories
+        // NSSet<UNNotificationCategory *> *categories for iOS10 or later
+        // NSSet<UIUserNotificationCategory *> *categories for iOS8 and iOS9
+    }
+    [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
@@ -681,6 +703,7 @@
     NSLog(@"deviceToken + %@ ",[[[[deviceToken description] stringByReplacingOccurrencesOfString: @"<" withString: @""]
                   stringByReplacingOccurrencesOfString: @">" withString: @""]
                  stringByReplacingOccurrencesOfString: @" " withString: @""]);
+    [JPUSHService registerDeviceToken:deviceToken];
 }
 
 

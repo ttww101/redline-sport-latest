@@ -2,6 +2,9 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'RedLineSport' do
+  
+    pod 'JPush'
+    pod 'JAnalytics'
     
     pod 'UMCCommon'                           #依赖库
     pod 'UMCSecurityPlugins'                  #依赖库

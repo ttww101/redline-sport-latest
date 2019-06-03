@@ -83,6 +83,18 @@ SOFTWARE.
 
 
 
+## JAnalytics
+
+Copyright jiguang.cn
+
+## JCore
+
+Copyright jpush.cn
+
+## JPush
+
+Copyright jiguang.cn
+
 ## MBProgressHUD
 
 Copyright (c) 2009-2015 Matej Bukovinski
