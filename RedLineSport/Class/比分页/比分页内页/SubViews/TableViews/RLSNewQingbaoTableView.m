@@ -71,15 +71,15 @@ static NSString * iden = @"testTime";
 
 - (void)setFeeDic:(NSDictionary *)feeDic {
     _feeDic = feeDic;
-    if ([_feeDic[@"count"] integerValue] >  0) {
-        self.tableHeaderView = self.lockView;
-        _lockView.infoMap = _feeDic;
-    } else {
+//    if ([_feeDic[@"count"] integerValue] >  0) {
+//        self.tableHeaderView = self.lockView;
+//        _lockView.infoMap = _feeDic;
+//    } else {
         if (_lockView) {
             [_lockView removeFromSuperview];
             self.tableHeaderView = nil;
         }
-    }
+//    }
 }
 
 - (void)setArrData:(NSArray *)arrData

@@ -144,7 +144,7 @@
         if (_model.amount == 0) {
             _labMoney.text = @"免费";
         } else {
-             _labMoney.text = [NSString stringWithFormat:@" ¥ %ld",_model.amount==3800?30:_model.amount/100];
+             _labMoney.text = [NSString stringWithFormat:@" %ld 连红币",_model.amount==3800?30:_model.amount/100];
         }
         
        

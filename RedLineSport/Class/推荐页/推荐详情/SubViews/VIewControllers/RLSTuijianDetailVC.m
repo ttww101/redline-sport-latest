@@ -108,7 +108,6 @@
     [self.labelQiuBi mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.payView).offset(2);
         make.left.mas_equalTo(15);
-        make.width.mas_equalTo(120);
     }];
     [self.btnPay mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.payView.mas_centerY);
@@ -616,9 +615,9 @@
                         if (!(str.length > 0)) {
                             str = @"钻石";
                         }
-                        _labelQiuBi.text = [NSString stringWithFormat:@"需支付 ¥ %ld", _model.amount == 3800 ? 30 : _model.amount / 100];
+                        _labelQiuBi.text = [NSString stringWithFormat:@"需支付 %ld 连红币", _model.amount == 3800 ? 30 : _model.amount / 100];
                         _labelQiuBi.font = font14;
-                        _labelQiuBi.attributedText = [RLSMethods withContent:_labelQiuBi.text WithColorText:[NSString stringWithFormat:@"¥ %ld", _model.amount == 3800 ? 30 : _model.amount / 100] textColor:redcolor strFont:font18];
+                        _labelQiuBi.attributedText = [RLSMethods withContent:_labelQiuBi.text WithColorText:[NSString stringWithFormat:@"%ld 连红币", _model.amount == 3800 ? 30 : _model.amount / 100] textColor:redcolor strFont:font18];
                     } else {
                         self.bottomView.hidden = NO;
                         self.payView.hidden = YES;

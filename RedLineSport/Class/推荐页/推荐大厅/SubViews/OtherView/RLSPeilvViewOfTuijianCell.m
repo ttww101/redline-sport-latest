@@ -151,7 +151,7 @@
         if (!(str.length > 0)) {
             str = @"钻石";
         }
-        _labchoice.text = [NSString stringWithFormat:@" ¥ %ld",_model.amount==3800?30:_model.amount/100];
+        _labchoice.text = [NSString stringWithFormat:@" %ld 连红币",_model.amount==3800?30:_model.amount/100];
     }
 }
 - (UIView *)basicView

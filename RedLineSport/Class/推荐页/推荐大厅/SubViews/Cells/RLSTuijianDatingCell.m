@@ -73,7 +73,7 @@
             if (!(str.length > 0)) {
                 str = @"钻石";
             }
-            _labMoney.text = [NSString stringWithFormat:@" ¥ %ld ",_model.amount==3800?30:_model.amount/100];
+            _labMoney.text = [NSString stringWithFormat:@" %ld 连红币 ",_model.amount==3800?30:_model.amount/100];
               self.lockView.hidden = false;
             if (_model.amount == 12800) {
                 self.lockView.hidden = true;
@@ -93,7 +93,7 @@
             if (!(str.length > 0)) {
                 str = @"钻石";
             }
-            _goldLabel.text = [NSString stringWithFormat:@"¥ %ld ", _model.amount==3800?30:_model.amount/100];
+            _goldLabel.text = [NSString stringWithFormat:@"%ld 连红币 ", _model.amount==3800?30:_model.amount/100];
             _goldLabel.hidden = false;
             self.lockView.hidden = false;
         } else{
@@ -456,11 +456,13 @@
             [self.lockView mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.right.equalTo(self.basicView.mas_right).offset(-20);
                 make.top.equalTo(self.headerUser.mas_bottom).offset(20);
-                make.size.mas_equalTo(CGSizeMake(54, 25));
+//                make.size.mas_equalTo(CGSizeMake(54, 25));
+                make.height.mas_equalTo(25);
             }];
             
             [self.goldLabel mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.right.equalTo(self.lockView.mas_right).offset(-3);
+                make.left.equalTo(self.lockIV.mas_right).offset(3);
                 make.centerY.equalTo(self.lockView.mas_centerY);
             }];
             
