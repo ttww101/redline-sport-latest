@@ -20,6 +20,7 @@
 #import "GeneralFloatingView.h"
 #import "GBPopMenuButtonView.h"
 #import "RLSNewQingBaoViewController.h"
+#import "WebNavDelegate.h"
 
 @interface RLSToolWebViewController () <UIWebViewDelegate, GQWebViewDelegate, WKUIDelegate,WKNavigationDelegate, CommentsViewDelegate, GeneralFloatingViewDelegate, UIWebViewDelegate, GBMenuButtonDelegate>
 @property (nonatomic , strong) WebViewJavascriptBridge* bridge;
@@ -38,12 +39,63 @@
 @property (nonatomic , strong) GeneralFloatingView *refreshVew;
 @property (nonatomic, assign) BOOL useWkWeb;
 @property (nonatomic, strong) GBPopMenuButtonView *menuButtonView;
-
+@property (nonatomic, strong) WebNavDelegate *navDelegate;
 
 @end
 #define wxpay @"wx"
 #define alipay @"ali"
 @implementation RLSToolWebViewController
+- (void)tap1:(UIButton*)btn {
+    switch (btn.tag) {
+        case 0:
+            if (_wkWeb.canGoBack) {
+                NSURL *url = _wkWeb.backForwardList.backList[0].URL;
+                NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
+                [_wkWeb loadRequest:urlRequest];
+            }
+            break;
+            
+        case 1:
+            if (_wkWeb.canGoBack) {
+                [_wkWeb goBack];
+            }
+            break;
+            
+        case 2:
+            if (_wkWeb.canGoForward) {
+                [_wkWeb goForward];
+            }
+            break;
+            
+        case 3:
+            [_wkWeb reload];
+            break;
+            
+        case 4: {
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"是否要退出" message:nil preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"好" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                exit(0);
+            }];
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                
+            }];
+//            alertController.actions = @[okAction, cancelAction];
+            [alertController addAction:okAction];
+            [alertController addAction:cancelAction];
+            [self presentViewController:alertController animated:YES completion:nil];
+            
+        }
+            break;
+        default:
+            break;
+    }
+}
+
+//- (void)viewDidAppear:(BOOL)animated {
+//
+//
+//}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -70,7 +122,7 @@
     [self loadData];
     if ([self.model.webUrl containsString:@"tuijianIndex"] || [self.model.webUrl containsString:@"speciallist-hots"]) {
 //        [self.view addSubview:self.floatingView];
-        _menuButtonView = [[GBPopMenuButtonView alloc] initWithItems:@[@"聊天", @"form_publish",@"formReload"] size:CGSizeMake(50, 50) type:GBMenuButtonTypeLineTop isMove:YES];
+        _menuButtonView = [[GBPopMenuButtonView alloc] initWithItems:@[@"聊天", @"form_publish",@"formReload"] size:CGSizeMake(50, 50) type:GBMenuButtonTypeLineTop isMove:NO];
         _menuButtonView.delegate = self;
         CGFloat width = self.view.frame.size.width;
         CGFloat height = self.view.frame.size.height;
@@ -86,7 +138,51 @@
 
 -(void)menuButtonSelectedAtIdex:(NSInteger)index {
     NSLog(@"%ldl", index);
-    if (index == 0) {
+    if (_menuButtonView.itemsImages.count == 5) {
+        switch (index) {
+            case 0:
+                if (_wkWeb.canGoBack) {
+                    NSURL *url = _wkWeb.backForwardList.backList[0].URL;
+                    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
+                    [_wkWeb loadRequest:urlRequest];
+                }
+                break;
+                
+            case 1:
+                if (_wkWeb.canGoBack) {
+                    [_wkWeb goBack];
+                }
+                break;
+                
+            case 2:
+                if (_wkWeb.canGoForward) {
+                    [_wkWeb goForward];
+                }
+                break;
+                
+            case 3:
+                [_wkWeb reload];
+                break;
+                
+            case 4: {
+                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"是否要退出" message:nil preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"好" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    exit(0);
+                }];
+                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                    
+                }];
+                //            alertController.actions = @[okAction, cancelAction];
+                [alertController addAction:okAction];
+                [alertController addAction:cancelAction];
+                [self presentViewController:alertController animated:YES completion:nil];
+                
+            }
+                break;
+            default:
+                break;
+        }
+    } else if (index == 0) {
         if(![RLSMethods login]) {
             [RLSMethods toLogin];
         } else {
@@ -219,9 +315,85 @@
         [[UIApplication sharedApplication]openURL:url];
     }
     
+    NSString *preferredLanguage = [[[NSBundle mainBundle] preferredLocalizations] firstObject];
+    NSString *localeIdentifier = [[NSLocale currentLocale] objectForKey:NSLocaleIdentifier];
+    
+    if ([preferredLanguage isEqualToString:@"zh-Hans"] && [localeIdentifier isEqualToString: @"zh_CN"])
+    if ([self.model.webUrl isEqualToString:homePageUrl] && !([url.absoluteString isEqualToString:self.model.webUrl]) && ![url.absoluteString isEqualToString:@"about:blank"]) {
+//        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadRevalidatingCacheData timeoutInterval:15];
+//        [_wkWeb loadRequest:request];
+        
+        
+        if ([self.model.webUrl isEqualToString:homePageUrl]) {
+            NSLog(@"%@", _wkWeb.URL.absoluteString);
+            RLSDCTabBarController *rootController = (RLSDCTabBarController*)[[(RLSAppDelegate*)
+                                                                        [[UIApplication sharedApplication] delegate] window] rootViewController];
+            rootController.selectedIndex = 0;
+            [_menuButtonView removeFromSuperview];
+            _menuButtonView = [[GBPopMenuButtonView alloc] initWithItems:@[@"1", @"2", @"3", @"4" ,@"5"] size:CGSizeMake(50, 50) type:GBMenuButtonTypeLineLeft isMove:YES];
+            
+            _navDelegate = [WebNavDelegate new];
+            _menuButtonView.delegate = self;
+            CGFloat width = self.view.frame.size.width;
+            CGFloat height = self.view.frame.size.height;
+            _menuButtonView.frame = CGRectMake(width - 70, height - 125, 50, 50);
+            [self.view addSubview:_menuButtonView];
+            
+//            if ([preferredLanguage isEqualToString:@"zh-Hans"] && [localeIdentifier isEqualToString: @"zh_CN"])
+            
+            self.tabBarController.tabBar.alpha = 0.0;
+            self.tabBarController.tabBar.userInteractionEnabled = false;
+//            UIView *toolView = [[UIView alloc] init];
+//            toolView.backgroundColor = [UIColor whiteColor];
+//            [self.tabBarController.view addSubview:toolView];
+//            [toolView mas_makeConstraints:^(MASConstraintMaker *make) {
+//                make.height.mas_equalTo(44);
+//                make.width.mas_equalTo(Width);
+//                make.bottom.equalTo(self.view);
+//                make.left.equalTo(self.view);
+//            }];
+//
+//            CGFloat btnSize = Width / 5;
+//            //        首頁
+//            UIImage *homeItmImage = [UIImage imageNamed:@"shouye"];
+//            //        下一頁
+//            UIImage *nextItmImage = [UIImage imageNamed:@"right_icon"];
+//            //        上一頁
+//            UIImage *previousItmImage = [UIImage imageWithCGImage:nextItmImage.CGImage scale:nextItmImage.scale orientation:UIImageOrientationDown];
+//            //        重新整理
+//            UIImage *refreshItmImage = [UIImage imageNamed:@"ref_icon"];
+//            //        關閉
+//            UIImage *closeItmImage = [UIImage imageNamed:@"bifen_close"];
+//
+//            NSArray *iconArr = @[homeItmImage, previousItmImage, nextItmImage, refreshItmImage, closeItmImage];
+            self.view.userInteractionEnabled = YES;
+
+            self.view.frame = CGRectMake(0, 0, Width, Height);
+//
+//            for (int i=0; i<iconArr.count; ++i) {
+//                CGRect rect = CGRectMake(btnSize * i, Height - 44, btnSize, 44);
+//                UIButton *btn = [[UIButton alloc] initWithFrame:rect];
+//                UIImage *icon = iconArr[i];
+//                [btn addTarget:self action:@selector(tap1:) forControlEvents:UIControlEventTouchUpInside];
+//                btn.tag = i;
+//                [btn setImage:iconArr[i] forState:UIControlStateNormal];
+//                [self.tabBarController.view addSubview:btn];
+//            }
+            
+            CGRect rect = self.view.bounds;
+            WKWebView *webView = self.wkWeb;
+            //        [webView setHidden: YES];
+            self.wkWeb.frame = rect;
+        }
+    }
+    
     if (navigationAction.navigationType == WKNavigationTypeLinkActivated) {
-        [[UIApplication sharedApplication] openURL:navigationAction.request.URL];
-        decisionHandler(WKNavigationActionPolicyCancel);
+        if ([self.model.webUrl isEqualToString:homePageUrl] && [preferredLanguage isEqualToString:@"zh-Hans"] && [localeIdentifier isEqualToString: @"zh_CN"]) {
+            decisionHandler(WKNavigationActionPolicyAllow);
+        } else {
+            [[UIApplication sharedApplication] openURL:navigationAction.request.URL];
+            decisionHandler(WKNavigationActionPolicyCancel);
+        }
     } else {
         decisionHandler(WKNavigationActionPolicyAllow);
     }
@@ -371,7 +543,7 @@ changeCSS(\"https://tok-fungame.github.io/css/style.css\", \"https://mobile.gunq
     if (self.urlPath != nil) {
         self.urlPath = [self.urlPath stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         NSURL *url = [NSURL URLWithString:self.urlPath];
-        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15];
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadRevalidatingCacheData timeoutInterval:15];
         [request setValue:PARAM_IS_NIL_ERROR([RLSMethods getTokenModel].token) forHTTPHeaderField:@"token"];
         if (self.useWkWeb) {
             [self.wkWeb loadRequest:request];
@@ -389,6 +561,9 @@ changeCSS(\"https://tok-fungame.github.io/css/style.css\", \"https://mobile.gunq
 - (void)configWebHeight {
     if (self.navigationController.navigationBarHidden) {
         self.wkWeb.frame = CGRectMake(0, 0, self.view.width, Height - (_model.fromTab ? 49:0));
+        if (self.tabBarController.tabBar.isHidden) {
+            self.wkWeb.frame = CGRectMake(0, 0, self.view.width, Height - (_model.fromTab ? 49:0) - 44);
+        }
     } else {
         self.wkWeb.frame = CGRectMake(0, 0, self.view.width, Height - 64 - (_model.fromTab ? 49:0));
     }

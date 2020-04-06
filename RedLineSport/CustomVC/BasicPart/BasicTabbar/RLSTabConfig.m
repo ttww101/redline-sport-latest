@@ -1,6 +1,9 @@
 #import "RLSTabConfig.h"
 #import "ArchiveFile.h"
 #import "RLSWebModel.h"
+
+//NSString *homePageUrl = @"http://localhost:8888/Switch/tuijianIndex.html";
+
 @interface RLSTabConfig ()
 @property (nonatomic, readwrite, strong) RLSDCTabBarController *tabBarController;
 @end
@@ -19,7 +22,7 @@
     
     RLSWebModel *model = [[RLSWebModel alloc]init];
     model.title = @"首页";
-    model.webUrl = [NSString stringWithFormat:@"https://tok-fungame.github.io/tuijianIndex.html", APPDELEGATE.url_ip,H5_Host];
+    model.webUrl = [NSString stringWithFormat:homePageUrl, APPDELEGATE.url_ip,H5_Host];
 //    NSString* path = [[NSBundle mainBundle] pathForResource:@"tuijianIndex" ofType:@"html"];
 //    NSString *htmlString = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
     

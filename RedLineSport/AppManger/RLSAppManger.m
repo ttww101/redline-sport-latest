@@ -54,6 +54,13 @@
         NSString *ret = [self getJSONMessage:@{@"ids":dataArr}];
         responseCallback(ret);
     }];
+    [self.bridge registerHandler:@"language" handler:^(id data, WVJBResponseCallback responseCallback) {
+        NSString *preferredLanguage = [[[NSBundle mainBundle] preferredLocalizations] firstObject];
+        NSString *localeIdentifier = [[NSLocale currentLocale] objectForKey:NSLocaleIdentifier];
+        NSString *ret = [self getJSONMessage:@{@"preferredLanguage":preferredLanguage, @"localeIdentifier":localeIdentifier}];
+        responseCallback(ret);
+    }];
+    
     [self.bridge registerHandler:@"currentPage" handler:^(id data, WVJBResponseCallback responseCallback) {
         RLSJSModel *model =  [RLSJSModel yy_modelWithDictionary:@{
                                                             @"methdName":@"currentPage:",

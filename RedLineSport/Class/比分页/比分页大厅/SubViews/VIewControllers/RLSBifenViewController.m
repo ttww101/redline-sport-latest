@@ -61,7 +61,7 @@
 
 - (void)configUI {
     [self.view addSubview:self.floatingView];
-    _menuButtonView = [[GBPopMenuButtonView alloc] initWithItems:@[@"聊天", @"form_publish",@"formReload"] size:CGSizeMake(50, 50) type:GBMenuButtonTypeLineTop isMove:YES];
+    _menuButtonView = [[GBPopMenuButtonView alloc] initWithItems:@[@"聊天", @"form_publish",@"formReload"] size:CGSizeMake(50, 50) type:GBMenuButtonTypeLineTop isMove:NO];
     _menuButtonView.delegate = self;
     CGFloat width = self.view.frame.size.width;
     CGFloat height = self.view.frame.size.height;

@@ -62,6 +62,7 @@
 		18F15057228C49720022DFA9 /* GBAnimationTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F15050228C49710022DFA9 /* GBAnimationTool.m */; };
 		18F15058228C49720022DFA9 /* GBPopMenuButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F15051228C49710022DFA9 /* GBPopMenuButtonItem.m */; };
 		18F15059228C49720022DFA9 /* GBPopMenuButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F15052228C49710022DFA9 /* GBPopMenuButtonView.m */; };
+		18FCAEFD22DC85730078A16D /* WebNavDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FCAEFC22DC85730078A16D /* WebNavDelegate.m */; };
 		7D29C6ED1DDDC3E800844CBE /* fensiuser@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D29C6EC1DDDC3E800844CBE /* fensiuser@2x.png */; };
 		7D29C6EF1DDDC40F00844CBE /* shezhiuser@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D29C6EE1DDDC40F00844CBE /* shezhiuser@2x.png */; };
 		7D29C6F91DE43A5000844CBE /* guanzhu.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D29C6F71DE43A5000844CBE /* guanzhu.png */; };
@@ -1236,6 +1237,8 @@
 		18F15053228C49710022DFA9 /* GBAnimationTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBAnimationTool.h; sourceTree = "<group>"; };
 		18F15054228C49710022DFA9 /* GBPopMenuButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBPopMenuButtonItem.h; sourceTree = "<group>"; };
 		18F15055228C49710022DFA9 /* GBPopMenuButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBPopMenuButtonView.h; sourceTree = "<group>"; };
+		18FCAEFB22DC85730078A16D /* WebNavDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebNavDelegate.h; sourceTree = "<group>"; };
+		18FCAEFC22DC85730078A16D /* WebNavDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebNavDelegate.m; sourceTree = "<group>"; };
 		5A45386A66ECC4D06AD0C1F0 /* Pods-RedLineSport.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedLineSport.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RedLineSport/Pods-RedLineSport.debug.xcconfig"; sourceTree = "<group>"; };
 		7ADBF1513C6676E76BF5EF48 /* Pods_GQZhiBo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GQZhiBo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D29C6EC1DDDC3E800844CBE /* fensiuser@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fensiuser@2x.png"; sourceTree = "<group>"; };
@@ -2913,6 +2916,8 @@
 				A941D533206E22FB008CE14F /* RLSToolKitViewController.m */,
 				A94B677B2071FC0D00E0748F /* RLSToolWebViewController.h */,
 				A94B677C2071FC0D00E0748F /* RLSToolWebViewController.m */,
+				18FCAEFB22DC85730078A16D /* WebNavDelegate.h */,
+				18FCAEFC22DC85730078A16D /* WebNavDelegate.m */,
 			);
 			path = VIewControllers;
 			sourceTree = "<group>";
@@ -7519,7 +7524,7 @@
 				TargetAttributes = {
 					EBC0A2A41CA924AE00F75E7E = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 6QJTK26K8Z;
+						DevelopmentTeam = SR5458F9K7;
 						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -8384,6 +8389,7 @@
 				EB9419231F5D7A89002660E4 /* RLSHSDashLineView.m in Sources */,
 				EB75EDBF1F3D886E00B6046C /* RLSLiveEventMedel.m in Sources */,
 				A943AAD520C14BA100501299 /* RLSAnalysisWebview.m in Sources */,
+				18FCAEFD22DC85730078A16D /* WebNavDelegate.m in Sources */,
 				A9D9494420BBAB4D0031B2F5 /* RLSTabbarButton.m in Sources */,
 				A991662C2111B07400FABE68 /* RLSDetailHeaderTableViewCell.m in Sources */,
 				EB8C1EE71F21974000A07863 /* RLSRelRecNewVC.m in Sources */,
@@ -8956,7 +8962,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 6QJTK26K8Z;
+				DEVELOPMENT_TEAM = SR5458F9K7;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -9013,7 +9019,7 @@
 					"-framework",
 					"\"SVProgressHUD\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lineredsport.mobile;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lineredsport.mobile1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "RedLineSport/RedLineSport-Bridging-Header.h";
@@ -9036,7 +9042,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = 6QJTK26K8Z;
+				DEVELOPMENT_TEAM = SR5458F9K7;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -9093,7 +9099,7 @@
 					"-framework",
 					"\"SVProgressHUD\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lineredsport.mobile;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lineredsport.mobile1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "RedLineSport/RedLineSport-Bridging-Header.h";
@@ -9159,7 +9165,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = 6QJTK26K8Z;
+				DEVELOPMENT_TEAM = SR5458F9K7;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -9216,7 +9222,7 @@
 					"-framework",
 					"\"SVProgressHUD\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lineredsport.mobile;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lineredsport.mobile1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "RedLineSport/RedLineSport-Bridging-Header.h";

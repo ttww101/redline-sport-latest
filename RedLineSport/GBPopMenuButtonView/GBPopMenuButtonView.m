@@ -37,7 +37,7 @@
         //判断是否添加添加移动手势
         if (isMove) {
             UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
-//            [self addGestureRecognizer:pan];
+            [self addGestureRecognizer:pan];
         }else{
             
             return self;

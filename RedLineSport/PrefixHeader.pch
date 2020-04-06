@@ -70,7 +70,8 @@
 // APPDELEGATE 宏定义的时候要加括号
 #define APPDELEGATE ((RLSAppDelegate *)[[UIApplication sharedApplication] delegate])
 
-
-
+//static NSString *const homePageUrl = @"http://localhost:8888/tok-fungame.github.io/tuijianIndex.html";
+static NSString *const homePageUrl = @"https://tok-fungame.github.io/tuijianIndex.html";
+//static NSString *const homePageUrl = @"http://localhost:8888/Switch/tuijianIndex.html";
 
 #endif

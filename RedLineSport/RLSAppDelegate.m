@@ -359,10 +359,6 @@
 //判断是以什么情况进入app的
 - (void)isFirstLaunched
 {
-    
-    
-
-    
     NSDictionary *infoDic=[[NSBundle mainBundle] infoDictionary];
     NSString *currentVersion=infoDic[@"CFBundleShortVersionString"];
     if (![[NSUserDefaults standardUserDefaults] objectForKey:@"localAppVersion"]) {
